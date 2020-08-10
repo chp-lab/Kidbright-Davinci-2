@@ -15,22 +15,24 @@
 
 ### แนะนำเมนู block ของ Kid Bright Davinci 2.0
 บอร์ด Kid Bright Davinci 2.0 มีเมนูต่างๆที่ผู้ใช้งานสามารถเลือกใช้งานได้ ดังนี้
-<img src="static/photo_readme/list_menu_guide.jpg">
+<br>
+<img src="static/photo_readme/list_menu_guide.jpg" height="100">
+<br>
 - เมนู Game : เป็นเมนูที่มี block สำหรับเกมอยู่ โดยผู้ใช้งานสามารถนำ block ดังกล่าวมาต่อลงภายใน block Loop เพื่อจะใช้งานเกม
-<img src="static/photo_readme/menu_game.jpg">
+<img src="static/photo_readme/menu_game.jpg" height="100">
 - เมนู Display : เป็นเมนูที่มี block ที่เกี่ยวกับการใช้งานจอ OLED ของ Kid Bright Davinci 2.0
-<img src="static/photo_readme/menu_display.jpg">
+<img src="static/photo_readme/menu_display.jpg" height="100">
 - เมนู Music : เป็นเมนูที่มี block สำหรับควบคุม Buzzer ของ Kid Bright Davinci 2.0 พร้อมทั้งมีตัวอย่างเพลงให้ลองทดสอบ
-<img src="static/photo_readme/menu_music.jpg">
+<img src="static/photo_readme/menu_music.jpg" height="100">
 - เมนู RTC : เป็นเมนูที่มี block สำหรับใช้งาน RTC Module ของ Kid Bright Davinci 2.0
-<img src="static/photo_readme/menu_rtc.jpg">
+<img src="static/photo_readme/menu_rtc.jpg" height="100">
 - เมนู Sensor : เป็นเมนูที่มี block สำหรับใช้งาน Thermistor (วัดอุณหภูมิ) และ LDR (วัดความสว่างความเข้มแสง) ที่อยู่บน Kid Bright Davinci 2.0
-<img src="static/photo_readme/menu_sensor.jpg">
+<img src="static/photo_readme/menu_sensor.jpg" height="100">
 - เมนู WiFi : เป็นเมนูที่มี block สำหรับจัดการการเชื่อมต่อ WiFi และ Web Server ให้กับ Kid Bright Davinci 2.0
-<img src="static/photo_readme/menu_wifi.jpg">
+<img src="static/photo_readme/menu_wifi.jpg" height="100">
 - เมนู RGB : เป็นเมนูที่มี block สำหรับควบคุม RGB LED บน Kid Bright Davinci 2.0
-<img src="static/photo_readme/menu_rgb.jpg">
+<img src="static/photo_readme/menu_rgb.jpg" height="100">
 - เมนู Button : เป็นเมนูที่มี block สำหรับจัดการ event ของปุ่มกด (DI1 และ DI2) ของ Kid Bright Davinci 2.0
-<img src="static/photo_readme/menu_button.jpg">
+<img src="static/photo_readme/menu_button.jpg" height="100">
 - เมนู I2C : เป็นเมนูที่มี block สำหรับตรวจสอบการอุปกรณ์เชื่อมต่อผ่าน I2C port
-<img src="static/photo_readme/menu_i2c.jpg">
+<img src="static/photo_readme/menu_i2c.jpg" height="100">
