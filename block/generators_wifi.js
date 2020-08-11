@@ -4,7 +4,7 @@ module.exports = function (Blockly) {
     var code = `
       const int LED_WIFI = 12;
       pinMode(LED_WIFI, OUTPUT);
-      digitalWrite(LED_WIFI, 0);
+      digitalWrite(LED_WIFI, 1);
     \n`;
     return code;
   };
@@ -16,16 +16,16 @@ module.exports = function (Blockly) {
     
     WiFi.begin("${text_ssid}","${text_password}");
     while(WiFi.status() != WL_CONNECTED){ 
-      digitalWrite(LED_WIFI, 1);
-      delay(200);
       digitalWrite(LED_WIFI, 0);
       delay(200);
       digitalWrite(LED_WIFI, 1);
       delay(200);
       digitalWrite(LED_WIFI, 0);
+      delay(200);
+      digitalWrite(LED_WIFI, 1);
       delay(200);
     }
-      digitalWrite(LED_WIFI, 0);
+      digitalWrite(LED_WIFI, 1);
     \n`;
     return code;
   };
