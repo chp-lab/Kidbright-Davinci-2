@@ -15,7 +15,7 @@
 
 ### แนะนำเมนู block ของ Kid Bright Davinci 2.0
 บอร์ด Kid Bright Davinci 2.0 มีเมนูต่างๆที่ผู้ใช้งานสามารถเลือกใช้งานได้ ดังนี้
-- เมนู Game : เป็นเมนูที่มี block สำหรับเกมอยู่ โดยผู้ใช้งานสามารถนำ block ดังกล่าวมาต่อลงภายใน block Loop เพื่อจะใช้งานเกม
+- เมนู Game : เป็นเมนูที่มี block สำหรับเกม โดยผู้ใช้งานสามารถนำ block ดังกล่าวมาต่อลงภายใน block Loop เพื่อจะใช้งานเกม
 <br><img src="static/photo_readme/menu_game.jpg" height="200"><br>
 - เมนู Display : เป็นเมนูที่มี block ที่เกี่ยวกับการใช้งานจอ OLED ของ Kid Bright Davinci 2.0
 <br><img src="static/photo_readme/menu_display.jpg" height="200"><br>
