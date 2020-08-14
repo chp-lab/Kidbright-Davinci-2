@@ -293,6 +293,7 @@ module.exports = {
 				'block_LDR', 
 			]
 		},
+		
 		{
 			name: "WiFi",
 			index: 6,
@@ -351,7 +352,26 @@ module.exports = {
 			index: 7,
 			color: "230",
 			blocks:[
-				'set_rgb',
+				{
+					xml:
+						`<block type="set_rgb">
+							<value name="r">
+								<shadow type="math_number">
+									<field name="NUM">0</field>
+								</shadow>
+							</value>
+							<value name="g">
+								<shadow type="math_number">
+									<field name="NUM">0</field>
+								</shadow>
+							</value>
+							<value name="b">
+								<shadow type="math_number">
+									<field name="NUM">0</field>
+								</shadow>
+							</value>
+						</block>`
+				},
 				'rgb_color',
 				'rgb_status',
 				'turn_off_rgb',
@@ -373,6 +393,58 @@ module.exports = {
 			index: 8,
 			color: "230",
 			blocks:['button_di1','button_di2']
+		},
+		{
+			name: "IoT-NEXPIE",
+			icon: `file:///${dirIcon}/static/icons/netpie.png`,
+			index: 9,
+			color: "120",
+			blocks: [
+				'setup_iot_nexpie_connect',
+				'iot_nexpie_callback',
+				{
+					xml : 
+						`<block type="iot_nexpie_subscribe">
+							<value name="subscribe_text">
+								<shadow type="basic_string">
+									<field name="VALUE">@msg/your_topic</field>
+								</shadow>
+							</value>
+						</block>`
+				},
+				{
+					xml : 
+						`<block type="iot_nexpie_unsubscribe">
+							<value name="unsubscribe_text">
+								<shadow type="basic_string">
+									<field name="VALUE">@msg/your_topic</field>
+								</shadow>
+							</value>
+						</block>`
+				},
+				{
+					xml : 
+						`<block type="iot_nexpie_publish">
+							<value name="publish_text">
+								<shadow type="basic_string">
+									<field name="VALUE">@msg/your_topic</field>
+								</shadow>
+							</value>
+							<value name="message_text">
+								<shadow type="basic_string">
+									<field name="VALUE">--message--</field>
+								</shadow>
+							</value>
+						</block>`
+				},
+				'iot_nexpie_update_shadow',
+				'iot_nexpie_reconnect',
+				'iot_nexpie_client_loop',
+				'iot_nexpie_isConnected',
+				'iot_nexpie_key_value_pair',
+				'iot_nexpie_topic',
+				'iot_nexpie_payload'
+			]
 		},
 		{
 			name: 'I2C',

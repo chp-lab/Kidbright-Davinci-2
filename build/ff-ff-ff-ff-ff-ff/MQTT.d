@@ -1,4 +1,4 @@
-C:\Users\yewuy\AppData\Local\Programs\kbide\boards\kid-bright-davinci\build\ff-ff-ff-ff-ff-ff\MQTT.o: \
+C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\build\ff-ff-ff-ff-ff-ff\MQTT.o: \
  C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\include\MQTT.cpp \
  C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\include\MQTT.h \
  C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\sdk\include\newlib/stdint.h \

@@ -1,35 +1,74 @@
-# Kid Bright Davinci 2.0
-### การติดตั้ง
-1. ติดตั้ง KBIDE โดยสามารถดาวน์โหลดได้จาก https://kbide.org/
-2. เปิดโปรแกรม KBIDE จากนั้น เลือกเมนู Board Manager
-<img src="static/photo_readme/board_manager_guide.jpg" height="100">
-3. ค้นหาบอร์ด โดยพิมพ์คำว่า 'Kid Bright Davinci 2.0' จากนั้นให้ทำการดาวน์โหลดบอร์ด
-<br>
+# ESP32-Wrover board for KBPro IDE
 
-> หมายเหตุ : หากไม่สามารถดาวน์โหลดผ่าน Board Manager ใน KBIDE ได้ ให้ทำการดาวน์โหลดจาก https://github.com/chp-lab/Kidbright-Davinci-2 แทน จากนั้นให้ Extract zip ไฟล์และนำโฟลเดอร์ของบอร์ด(เปลี่ยนชื่อ folder ที่ได้เป็น Kidbright-Davinci-2 ก่อน) ไปวางที่ Board folder ของ KBIDE (สามารถเปิด Board folder ของ KBIDE โดยการเลือกเมนู File > Open Board folder)
+## การสร้างบอร์ดสำหรับ KBPro IDE
+- ทำการ falk repository นี้ (หรือ repo ที่ต้องการแก้ไข)
+- ใน folder **block** จะเก็บ block ที่ให้แสดงใน IDE สามารถเพิ่ม block ใหม่เข้าไปได้
+	- ในการสร้าง block ใหม่จะต้องมี 2 ไฟล์ **blocks-xxx.js** และ **generators-xxx.js**
+	- blocks-wifi.js (ตัวอย่างการสร้าง block wifi)
+		~~~ 
+        module.exports = function(Blockly){
+        'use strict';
+        
+          Blockly.Blocks['wifi_connect'] = {
+              init: function() {
+                this.appendDummyInput()
+                    .appendField("connect WiFi ssid")
+                    .appendField(new Blockly.FieldTextInput("test"), "ssid")
+                    .appendField("password")
+                    .appendField(new Blockly.FieldTextInput("test"), "password");
+                this.setInputsInline(true);
+                this.setPreviousStatement(true, null);
+                this.setNextStatement(true, null);
+                this.setColour(270);
+                this.setTooltip("connect WiFi");
+                this.setHelpUrl("");
+          	}
+          }
+          
+        };
+        ~~~
+    - generators-wifi.js (ตัวอย่างการสร้าง generator wifi)
+        ~~~ 
+        module.exports = function(Blockly){
+        'use strict';
+        	Blockly.JavaScript['wifi_connect'] = function(block) {
+            	var text_ssid = block.getFieldValue('ssid');
+                var text_password = block.getFieldValue('password');
+                var code = `
+                  WiFi.begin("${text_ssid}","${text_password}");
+                  while(WiFi.status() != WL_CONNECTED){ 
+                      delay(500); 
+                  }
+                  `;
+  				return code;
+            }
+		};
 
-### การเรียกใช้งาน
-หลังจากติดตั้ง Kid Bright Davinci 2.0 เรียบร้อยแล้ว ให้ทำตามขั้นตอนต่อไปนี้
-1. เลือกเมนู Board Manager
-2. เลือก Kid Bright Davinci 2.0 แล้วกด Change Board
-
-### แนะนำเมนู block ของ Kid Bright Davinci 2.0
-บอร์ด Kid Bright Davinci 2.0 มีเมนูต่างๆที่ผู้ใช้งานสามารถเลือกใช้งานได้ ดังนี้
-- เมนู Game : เป็นเมนูที่มี block สำหรับเกม โดยผู้ใช้งานสามารถนำ block ดังกล่าวมาต่อลงภายใน block Loop เพื่อจะใช้งานเกม
-<br><img src="static/photo_readme/menu_game.jpg" height="200"><br>
-- เมนู Display : เป็นเมนูที่มี block ที่เกี่ยวกับการใช้งานจอ OLED ของ Kid Bright Davinci 2.0
-<br><img src="static/photo_readme/menu_display.jpg" height="200"><br>
-- เมนู Music : เป็นเมนูที่มี block สำหรับควบคุม Buzzer ของ Kid Bright Davinci 2.0 พร้อมทั้งมีตัวอย่างเพลงให้ลองทดสอบ
-<br><img src="static/photo_readme/menu_music.jpg" height="200"><br>
-- เมนู RTC : เป็นเมนูที่มี block สำหรับใช้งาน RTC Module ของ Kid Bright Davinci 2.0
-<br><img src="static/photo_readme/menu_rtc.jpg" height="200"><br>
-- เมนู Sensor : เป็นเมนูที่มี block สำหรับใช้งาน Thermistor (วัดอุณหภูมิ) และ LDR (วัดความสว่างความเข้มแสง) ที่อยู่บน Kid Bright Davinci 2.0
-<br><img src="static/photo_readme/menu_sensor.jpg" height="200"><br>
-- เมนู WiFi : เป็นเมนูที่มี block สำหรับจัดการการเชื่อมต่อ WiFi และ Web Server ให้กับ Kid Bright Davinci 2.0
-<br><img src="static/photo_readme/menu_wifi.jpg" height="200"><br>
-- เมนู RGB : เป็นเมนูที่มี block สำหรับควบคุม RGB LED บน Kid Bright Davinci 2.0
-<br><img src="static/photo_readme/menu_rgb.jpg" height="200"><br>
-- เมนู Button : เป็นเมนูที่มี block สำหรับจัดการ event ของปุ่มกด (DI1 และ DI2) ของ Kid Bright Davinci 2.0
-<br><img src="static/photo_readme/menu_button.jpg" height="200"><br>
-- เมนู I2C : เป็นเมนูที่มี block สำหรับตรวจสอบการอุปกรณ์เชื่อมต่อผ่าน I2C port
-<br><img src="static/photo_readme/menu_i2c.jpg" height="200"><br>
+        ~~~
+   - สามารถออกแบบ design block อย่างง่ายได้ที่ <https://blockly-demo.appspot.com/static/demos/blockfactory/index.html> 
+   - ในไฟล์ config.js จะเป็น json สำหรับจัดเรียงการแสดงผล block บน toolbar ซึ่งสามารถกำหนดแบบปกติและแบบ xml (ดูตัวอย่างในไฟล์) config.js
+- **build** จะเก็บโค้ดและไฟล์ที่คอมไพล์แล้ว (.bin) ไว้แยกตาม MAC Address
+- **include** ใช้สำหรับเก็บโค้ด .h และ .cpp โดยขณะที่ compile จะรวมโค้ดเหล่านี้เข้าไปด้วย
+- **lib** ใช้สำหรับเก็บ static library .a สำหรับการ link
+- **plugin** จะใช้เก็บ plugin ของบอร์ด (ปลั๊กอินที่มี scope ใช้งานได้เฉพาะบอร์ดจะเก็บไว้ที่นี่)
+- **static** จะเก็บไฟล์อื่น ๆ เช่นรูปภาพแสดงผล เสียง เป็นต้น
+- ไฟล์ **compiler.js** จะเป็นไฟล์ที่ถูกเรียกใช้เมื่อทำการคอมไพล์ สามารถแก้ไขการคอมไพล์ได้ที่ไฟล์นี้
+- ไฟล์ **config.js** ให้ทำการแก้ไขรายละเอียดของบอร์ดที่ไฟล์นี้
+	- name : 'esp32-wrover',     //เป็นชื่อของบอร์ด ห้ามมี spacebar
+    - platform : 'arduino-esp32',     //ใช้กำหนด platform ของบอร์ดนี้ว่าจะเป็น platform ไหน
+    - title : 'Generic ESP32 Wrover',    //ชื่อที่ใช้แสดงผล  
+    - description : 'ESP32-Wrover development board with extra RAM.\n',    //คำอธิบายบอร์ด
+    - author : 'Comdet Phueadphut',     //ผู้เขียน
+    - website : 'https://docs.espressif.com/projects/esp-idf/en/latest/get-started/get-started-wrover-kit.html',    //เว็บไซต์ของบอร์ด
+    - email : 'comdet.p@gmail.com',    //email ติดต่อ
+    - git : 'https://github.com/comdet/generic-esp32-wrover/',     //github ของบอร์ด (รองรับแค่ github เท่านั้น)
+    - image : '/static/display.jpg',     //รูปภาพที่ใช้แสดงผล
+    - version : '1.0.1'     //เวอร์ชั่นของบอร์ด 
+- context.json ใช้เก็บ flag ตอน compile เรียกใช้โดยไฟล์ compile.js (เก็บเป็นแบบ Array)
+- template.c ไฟล์สำหรับเป็น template ของโค้ด โดยโค้ดที่เขียนจาก block จะแทรกตามส่วนต่าง ๆ ของไฟล์นี้เพื่อประกอบเป็นโค้ดที่สมบูรณ์
+## การเพิ่มบอร์ดเข้า IDE
+สามารถทำได้โดยคัดลอกไปยัง folder board ใน IDE
+## การ publish บอร์ด
+- ทำการเปิดโหมด developer ใน IDE setting
+- เข้าไปที่เมนูเลือกบอร์ด จะมีปุ่ม + เพิ่มขึ้นมา 
+- ทำการใส่ URL ของ github เข้าไป

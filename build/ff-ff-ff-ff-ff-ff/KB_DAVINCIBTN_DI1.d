@@ -1,6 +1,6 @@
-C:\Users\yewuy\AppData\Local\Programs\kbide\boards\kid-bright-davinci\build\ff-ff-ff-ff-ff-ff\KB_DAVINCIBTN_DI1.o: \
- C:\Users\yewuy\AppData\Local\Programs\kbide\boards\kid-bright-davinci\include\KB_DAVINCIBTN_DI1.cpp \
- C:\Users\yewuy\AppData\Local\Programs\kbide\boards\kid-bright-davinci\include\KB_DAVINCIBTN_DI1.h \
+C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\build\ff-ff-ff-ff-ff-ff\KB_DAVINCIBTN_DI1.o: \
+ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include\KB_DAVINCIBTN_DI1.cpp \
+ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include\KB_DAVINCIBTN_DI1.h \
  C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\lib\include/Arduino.h \
  C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\sdk\include\newlib/stdint.h \
  C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\sdk\include\newlib/machine/_default_types.h \
@@ -128,4 +128,4 @@ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\kid-bright-davinci\build\ff-f
  C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\lib\include/IPAddress.h \
  C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\lib\include/HardwareSerial.h \
  C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\lib\include/Esp.h \
- C:\Users\yewuy\AppData\Local\Programs\kbide\boards\kid-bright-davinci\include/pins_arduino.h
+ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include/pins_arduino.h
