@@ -4,7 +4,6 @@ module.exports = function (Blockly) {
     var code = `
       const int LED_WIFI = 12;
       pinMode(LED_WIFI, OUTPUT);
-      digitalWrite(LED_WIFI, 1);
     \n`;
     return code;
   };

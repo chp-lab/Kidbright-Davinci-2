@@ -192,5 +192,14 @@ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\build\ff-
  C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include/OLEDDisplayFonts.h \
  C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\lib\libraries_include/Wire.h \
  C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\lib\include/esp32-hal.h \
- C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\include/PubSubClient.h \
- C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\include/MQTT.h
+ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include/RtcDS1307.h \
+ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include/RtcDateTime.h \
+ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include/RtcUtility.h \
+ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include/KB_DAVINCI.h \
+ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include/KB_DAVINCIThermistor.h \
+ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include/KB_DAVINCIRGB.h \
+ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include/KB_DAVINCII2C.h \
+ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include/KB_DAVINCIBTN_DI1.h \
+ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include/KB_DAVINCIBTN_DI2.h \
+ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include/KB_DAVINCIBUZZER.h \
+ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include/KB_DAVINCILDR.h
