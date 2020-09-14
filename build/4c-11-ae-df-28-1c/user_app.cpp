@@ -4,36 +4,32 @@
 #include <WiFiAP.h>
 #include <WebServer.h>
 
-#include "Servo.h"
-#include <KB_DAVINCI.h>
+#include <Adafruit_MLX90614.h>
+  			#include <Wire.h>
 
-Servo Servo1;
-KB_DAVINCIBTN_DI1 BTN1;
-KB_DAVINCIBTN_DI2 BTN2;
+Adafruit_MLX90614 mlx2 = Adafruit_MLX90614();
+Adafruit_MLX90614 mlx90614_1 = Adafruit_MLX90614();
 
 
 
 void setup()
 {
-  BTN1.init();
-BTN2.init();
+  
   Serial.begin(115200);
 
-          
-          
-            Servo1.attach(32);
+  	
+  	
+  			mlx2.begin(0);
+
+  	
+  	
+  			mlx90614_1.begin(0);
 }
 void loop()
 {
-    if (
-  		    BTN1.pressed()
-  		) {
-                Servo1.write(50);
-            } else if (
-  		    BTN2.pressed()
-  		) {
-                Servo1.write((-50));
-            }
+    Serial.println(mlx2.readObjectTempC());
+  Serial.println(mlx90614_1.readObjectTempC());
+  delay(2000);
 
   
 }

@@ -5,6 +5,7 @@ module.exports = function (Blockly) {
 	//////////////////////////////pir/////////////////////////////////////////////
 	Blockly.JavaScript['setup_pir_motion'] = function (block) {
 		var pin_pir = Blockly.JavaScript.valueToCode(block, 'pir_PIN', Blockly.JavaScript.ORDER_ATOMIC);
+		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);
 		var code = `
 		#EXTINC
 			
@@ -18,15 +19,15 @@ module.exports = function (Blockly) {
 			int resolution = 8;
 			int dutyCycle = 128;
 
-			SemaphoreHandle_t syncSemaphore;
+			SemaphoreHandle_t ${variable_instance};
 		#END
 		#FUNCTION
 			void IRAM_ATTR handleInterrupt() {
-				xSemaphoreGiveFromISR(syncSemaphore, NULL);
+				xSemaphoreGiveFromISR(${variable_instance}, NULL);
 				}
 		#END
 		#SETUP 
-			syncSemaphore = xSemaphoreCreateBinary();
+			${variable_instance} = xSemaphoreCreateBinary();
 	
 			pinMode(sensorPin, INPUT_PULLUP);
 			attachInterrupt(digitalPinToInterrupt(sensorPin), handleInterrupt, CHANGE);
@@ -40,6 +41,7 @@ module.exports = function (Blockly) {
 	};
 
 	Blockly.JavaScript['block_looppir'] = function (block) {
+		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);
 		var code = `
 		#EXTINC
 			
@@ -53,13 +55,13 @@ module.exports = function (Blockly) {
 		#SETUP 
 		
 		#END
-			xSemaphoreTake(syncSemaphore, portMAX_DELAY);
+			xSemaphoreTake(${variable_instance}, portMAX_DELAY);
 	`;
 		return code;
 	};
 
 	Blockly.JavaScript['read_pir'] = function (block) {
-		var pin_pir = Blockly.JavaScript.valueToCode(block, 'pir_PIN', Blockly.JavaScript.ORDER_ATOMIC);
+
 		var code = `
 		#EXTINC
 			
@@ -80,13 +82,14 @@ module.exports = function (Blockly) {
 	//////////////////////////////sound/////////////////////////////////////////////
 	Blockly.JavaScript['set_pinsound'] = function (block) {
 		var value_soundpin = Blockly.JavaScript.valueToCode(block, 'soundPIN', Blockly.JavaScript.ORDER_ATOMIC);
+		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);
 		var code = `
 		#EXTINC
 			#include <KB_DAVINCI.h>
 		#END
 		#VARIABLE
 		    int setpin = ${value_soundpin};
-			KB_DAVINCISOUND sound(setpin);
+			KB_DAVINCISOUND ${variable_instance}(setpin);
 		#END
 		#SETUP
 			
@@ -96,6 +99,7 @@ module.exports = function (Blockly) {
 		return code;
 	};
 	Blockly.JavaScript['read_sound'] = function (block) {
+		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);
 		var code = `
 		#EXTINC
 
@@ -106,7 +110,7 @@ module.exports = function (Blockly) {
 		#SETUP
 			
 		#END
-		sound.readValue()
+		${variable_instance}.readValue()
 		
 	`;
 		return [code, Blockly.JavaScript.ORDER_NONE];
@@ -115,14 +119,13 @@ module.exports = function (Blockly) {
 	Blockly.JavaScript['set_pindistance'] = function (block) {
 		var value_trigpin = Blockly.JavaScript.valueToCode(block, 'trigPin', Blockly.JavaScript.ORDER_ATOMIC);
 		var value_echopin = Blockly.JavaScript.valueToCode(block, 'echoPin', Blockly.JavaScript.ORDER_ATOMIC);
+		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);
 		var code = `
 		#EXTINC
 			#include <KB_DAVINCI.h>
 		#END
 		#VARIABLE
-			int trigPin = ${value_trigpin};
-			int echoPin = ${value_echopin};
-			KB_DAVINCIDistance Distance(trigPin,echoPin);
+			KB_DAVINCIDistance ${variable_instance}(${value_trigpin},${value_echopin});
 		#END
 		#SETUP
 			
@@ -132,6 +135,7 @@ module.exports = function (Blockly) {
 		return code;
 	};
 	Blockly.JavaScript['read_distance_mm'] = function (block) {
+		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);
 		var code = `
 		#EXTINC
 
@@ -142,12 +146,13 @@ module.exports = function (Blockly) {
 		#SETUP
 			
 		#END
-		Distance.readDistance_mm()
+		${variable_instance}.readDistance_mm()
 		
 	`;
 		return [code, Blockly.JavaScript.ORDER_NONE];
 	};
 	Blockly.JavaScript['read_distance_cm'] = function (block) {
+		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);
 		var code = `
 		#EXTINC
 
@@ -158,12 +163,13 @@ module.exports = function (Blockly) {
 		#SETUP
 			
 		#END
-		Distance.readDistance_cm()
+		${variable_instance}.readDistance_cm()
 		
 	`;
 		return [code, Blockly.JavaScript.ORDER_NONE];
 	};
 	Blockly.JavaScript['read_distance_in'] = function (block) {
+		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);
 		var code = `
 		#EXTINC
 
@@ -174,12 +180,13 @@ module.exports = function (Blockly) {
 		#SETUP
 			
 		#END
-		Distance.readDistance_in()
+		${variable_instance}.readDistance_in()
 		
 	`;
 		return [code, Blockly.JavaScript.ORDER_NONE];
 	};
 	Blockly.JavaScript['read_distance_m'] = function (block) {
+		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);
 		var code = `
 		#EXTINC
 
@@ -190,7 +197,7 @@ module.exports = function (Blockly) {
 		#SETUP
 			
 		#END
-		Distance.readDistance_m()
+		${variable_instance}.readDistance_m()
 		
 	`;
 		return [code, Blockly.JavaScript.ORDER_NONE];
@@ -199,40 +206,80 @@ module.exports = function (Blockly) {
 	//////////////////////////////MLX90614/////////////////////////////////////////////
 	Blockly.JavaScript['KBD_beginMLX90614'] = function (block) {
 		var value_scl = Blockly.JavaScript.valueToCode(block, 'SCL', Blockly.JavaScript.ORDER_ATOMIC);
+		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);
 		var code = `
 	#EXTINC
-	#include <Adafruit_MLX90614.h>
-	#END
-	#EXTINC
-	#include <Wire.h>
+			#include <Adafruit_MLX90614.h>
+			#include <Wire.h>
 	#END
 	#VARIABLE
-	Adafruit_MLX90614 mlx90614 = Adafruit_MLX90614();
+			Adafruit_MLX90614 ${variable_instance} = Adafruit_MLX90614();
 	#END
-	mlx90614.begin(0);
+			${variable_instance}.begin(0);
 	`;
 		return code;
 	};
 
 	Blockly.JavaScript['KBD_read_object_temp_c'] = function (block) {
-		var code = `mlx90614.readObjectTempC()`;
+		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);
+		var code = `${variable_instance}.readObjectTempC()`;
 		return [code, Blockly.JavaScript.ORDER_ATOMIC];
 	};
 
 	Blockly.JavaScript['KBD_read_object_temp_f'] = function (block) {
-		var code = `mlx90614.readObjectTempF()`;
+		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);
+		var code = `${variable_instance}.readObjectTempF()`;
 		return [code, Blockly.JavaScript.ORDER_ATOMIC];
 	};
 
 	Blockly.JavaScript['KBD_read_ambient_temp_c'] = function (block) {
-		var code = `mlx90614.readAmbientTempC()`;
+		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);
+		var code = `${variable_instance}.readAmbientTempC()`;
 		return [code, Blockly.JavaScript.ORDER_ATOMIC];
 	};
 
 	Blockly.JavaScript['KBD_read_ambient_temp_f'] = function (block) {
-		var code = `mlx90614.readAmbientTempF()`;
+		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);
+		var code = `${variable_instance}.readAmbientTempF()`;
 		return [code, Blockly.JavaScript.ORDER_ATOMIC];
 	};
+	//////////////////////////////load cell/////////////////////////////////////////////
+	Blockly.JavaScript['set_load_cell'] = function (block) {
+		var value_DOUTPin = Blockly.JavaScript.valueToCode(block, 'DOUTPin', Blockly.JavaScript.ORDER_ATOMIC);
+		var value_SCKPin = Blockly.JavaScript.valueToCode(block, 'SCKPin', Blockly.JavaScript.ORDER_ATOMIC);
+		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);
+		var code = `
+		#EXTINC
+			#include <HX711.h>
+		#END
+		#VARIABLE
+			int LOADCELL_DOUT_PIN = ${value_DOUTPin};
+			int LOADCELL_SCK_PIN = ${value_SCKPin};
+
+			HX711 ${variable_instance};
+		#END
+		#SETUP
+			${variable_instance}.begin(LOADCELL_DOUT_PIN, LOADCELL_SCK_PIN);
+		#END
+		
+	`;
+		return code;
+	};
+	Blockly.JavaScript['ready_load_cell'] = function (block) {
+		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);
+		var code = `${variable_instance}.is_ready()`;
+		return [code, Blockly.JavaScript.ORDER_ATOMIC];
+	};
+    Blockly.JavaScript['read_load_cell'] = function (block) {
+		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);
+		var code = `${variable_instance}.read()`;
+		return [code, Blockly.JavaScript.ORDER_ATOMIC];
+	};
+
+
+
+
+
 
 	//////////////////////////////DHT/////////////////////////////////////////////
 	  Blockly.JavaScript['KBD_dht_setup'] = function(block) {

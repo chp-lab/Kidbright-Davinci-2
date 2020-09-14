@@ -21,28 +21,6 @@ module.exports = {
 
 			]
 		},
-		// {
-		// 	name: 'Temperature',
-		// 	icon: `file:///${dirIcon}/static/icons/blink.png`,
-		// 	index: 1,
-		// 	color: "230",
-		// 	blocks:[
-		// 		{
-		// 			xml:
-		// 				`<block type="KBD_begin">
-		// 					<value name="SCL">
-		// 						<shadow type="math_number">
-		// 							<field name="NUM">22</field>
-		// 						</shadow>
-		// 					</value>
-		// 				</block>`
-		// 		},
-		// 		'KBD_read_object_temp_c',
-		// 		'KBD_read_ambient_temp_c',
-		// 		'KBD_read_object_temp_f',
-		// 		'KBD_read_ambient_temp_f',
-		// 	]
-		// },
 		{
 			name: 'Game',
 			icon: `file:///${dirIcon}/static/icons/game_icon.png`,
@@ -474,9 +452,28 @@ module.exports = {
 				'KBD_read_object_temp_f',
 				'KBD_read_ambient_temp_f',
 				{
+					xml: `<sep gap="28"></sep><label text="Kid Bright Davinci Sensor : Load cell weight sensor" web-class="headline"></label>`
+				},
+				{
+					xml:
+						`<block type="set_load_cell">
+										<value name="DOUTPin">
+											<shadow type="math_number">
+												<field name="NUM">32</field>
+											</shadow>
+										</value>
+										<value name="SCKPin">
+											<shadow type="math_number">
+												<field name="NUM">33</field>
+											</shadow>
+										</value>
+									</block>`
+				},
+				'ready_load_cell',
+				'read_load_cell',
+				{
 					xml: `<sep gap="28"></sep><label text="Kid Bright Davinci Sensor : DHT" web-class="headline"></label>`
 				},
-				// 'KBD_dht_setup',
 				{
 					xml:
 						`<block type="KBD_dht_setup">

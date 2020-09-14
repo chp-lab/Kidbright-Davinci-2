@@ -7,11 +7,13 @@ module.exports = function (Blockly) {
     var color_distance = "#cc0052";
     var color_MLX90614 = "#47d147";
     var color_dht = "#3366ff";
+    var color_loadcell = "#ff9900";
     //////////////////////////////pir/////////////////////////////////////////////
     Blockly.Blocks['setup_pir_motion'] = {
         init: function () {
             this.appendDummyInput()
                 .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/pir_icon.png`, 20, 20, { alt: "*", flipRtl: "FALSE" }))
+                .appendField(new Blockly.FieldVariable("pir1", null, ["Plugin.pir"], ["Plugin.pir"]), "instance")
                 .appendField("Setup PIR Motion PIN :")
             this.appendValueInput("pir_PIN")
                 .setCheck("Number")
@@ -29,6 +31,7 @@ module.exports = function (Blockly) {
         init: function () {
             this.appendDummyInput()
                 .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/pir_icon.png`, 20, 20, { alt: "*", flipRtl: "FALSE" }))
+                .appendField(new Blockly.FieldVariable("pir1", null, ["Plugin.pir"], ["Plugin.pir"]), "instance")
                 .appendField("LOOP PIR INTERRUPT");
             this.setPreviousStatement(true, null);
             this.setNextStatement(true, null);
@@ -42,6 +45,7 @@ module.exports = function (Blockly) {
         init: function () {
             this.appendDummyInput()
                 .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/pir_icon.png`, 20, 20, { alt: "*", flipRtl: "FALSE" }))
+                .appendField(new Blockly.FieldVariable("pir1", null, ["Plugin.pir"], ["Plugin.pir"]), "instance")
                 .appendField("Read PIR sensor");
             this.setOutput(true, null);
             this.setColour(color_pir_motion);
@@ -56,7 +60,8 @@ module.exports = function (Blockly) {
         init: function () {
             this.appendDummyInput()
                 .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/sound_icon.png`, 20, 20, { alt: "*", flipRtl: "FALSE" }))
-                .appendField("Set up SOUND KY-037 SENSOR PIN");
+                .appendField(new Blockly.FieldVariable("sound1", null, ["Plugin.sound"], ["Plugin.sound"]), "instance")
+                .appendField("Setup SOUND KY-037 SENSOR PIN");
             this.appendValueInput("soundPIN")
                 .setCheck("Number");
             this.setInputsInline(true);
@@ -71,6 +76,7 @@ module.exports = function (Blockly) {
         init: function () {
             this.appendDummyInput()
                 .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/sound_icon.png`, 20, 20, { alt: "*", flipRtl: "FALSE" }))
+                .appendField(new Blockly.FieldVariable("sound1", null, ["Plugin.sound"], ["Plugin.sound"]), "instance")
                 .appendField("Read Sound KY-037 sensor");
             this.setOutput(true, "Number");
             this.setColour(color_sound);
@@ -85,7 +91,8 @@ module.exports = function (Blockly) {
         init: function () {
             this.appendDummyInput()
                 .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/distance.png`, 42, 20, { alt: "*", flipRtl: "FALSE" }))
-                .appendField("Set up DISTANCE Ultrasonic SENSOR :")
+                .appendField(new Blockly.FieldVariable("ultrasonic1", null, ["Plugin.sound"], ["Plugin.sound"]), "instance")
+                .appendField("Setup Ultrasonic :")
                 .appendField("trig Pin");
             this.appendValueInput("trigPin")
                 .setCheck("Number");
@@ -104,6 +111,7 @@ module.exports = function (Blockly) {
         init: function () {
             this.appendDummyInput()
                 .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/distance.png`, 42, 20, { alt: "*", flipRtl: "FALSE" }))
+                .appendField(new Blockly.FieldVariable("ultrasonic1", null, ["Plugin.sound"], ["Plugin.sound"]), "instance")
                 .appendField("Read Ultrasonic Distance (mm.)");
             this.setOutput(true, "Number");
             this.setColour(color_distance);
@@ -115,6 +123,7 @@ module.exports = function (Blockly) {
         init: function () {
             this.appendDummyInput()
                 .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/distance.png`, 42, 20, { alt: "*", flipRtl: "FALSE" }))
+                .appendField(new Blockly.FieldVariable("ultrasonic1", null, ["Plugin.sound"], ["Plugin.sound"]), "instance")
                 .appendField("Read Ultrasonic Distance (cm.)");
             this.setOutput(true, "Number");
             this.setColour(color_distance);
@@ -126,6 +135,7 @@ module.exports = function (Blockly) {
         init: function () {
             this.appendDummyInput()
                 .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/distance.png`, 42, 20, { alt: "*", flipRtl: "FALSE" }))
+                .appendField(new Blockly.FieldVariable("ultrasonic1", null, ["Plugin.sound"], ["Plugin.sound"]), "instance")
                 .appendField("Read Ultrasonic Distance (in.)");
             this.setOutput(true, "Number");
             this.setColour(color_distance);
@@ -137,6 +147,7 @@ module.exports = function (Blockly) {
         init: function () {
             this.appendDummyInput()
                 .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/distance.png`, 42, 20, { alt: "*", flipRtl: "FALSE" }))
+                .appendField(new Blockly.FieldVariable("ultrasonic1", null, ["Plugin.sound"], ["Plugin.sound"]), "instance")
                 .appendField("Read Ultrasonic Distance (m.)");
             this.setOutput(true, "Number");
             this.setColour(color_distance);
@@ -151,7 +162,8 @@ module.exports = function (Blockly) {
         init: function () {
             this.appendDummyInput()
                 .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/mlx90614.png`, 25, 25, { alt: "*", flipRtl: "FALSE" }))
-                .appendField("setup MLX90614 pin (SDA [GPIO21]");
+                .appendField(new Blockly.FieldVariable("mlx90614_1", null, ["Plugin.mlx90614_x"], ["Plugin.mlx90614_x"]), "instance")
+                .appendField("Setup MLX90614 pin ( SDA [GPIO21]");
             this.appendDummyInput()
                 .appendField(", SCL");
             this.appendValueInput("SCL")
@@ -172,6 +184,7 @@ module.exports = function (Blockly) {
         init: function () {
             this.appendDummyInput()
                 .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/mlx90614.png`, 25, 25, { alt: "*", flipRtl: "FALSE" }))
+                .appendField(new Blockly.FieldVariable("mlx90614_1", null, ["Plugin.mlx90614_x"], ["Plugin.mlx90614_x"]), "instance")
                 .appendField("MLX90614 read object temperature (C)");
             this.setOutput(true, ["double", "Number"]);
             this.setColour(color_MLX90614);
@@ -184,6 +197,7 @@ module.exports = function (Blockly) {
         init: function () {
             this.appendDummyInput()
                 .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/mlx90614.png`, 25, 25, { alt: "*", flipRtl: "FALSE" }))
+                .appendField(new Blockly.FieldVariable("mlx90614_1", null, ["Plugin.mlx90614_x"], ["Plugin.mlx90614_x"]), "instance")
                 .appendField("MLX90614 read object temperature (F)");
             this.setOutput(true, ["double", "Number"]);
             this.setColour(color_MLX90614);
@@ -196,6 +210,7 @@ module.exports = function (Blockly) {
         init: function () {
             this.appendDummyInput()
                 .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/mlx90614.png`, 25, 25, { alt: "*", flipRtl: "FALSE" }))
+                .appendField(new Blockly.FieldVariable("mlx90614_1", null, ["Plugin.mlx90614_x"], ["Plugin.mlx90614_x"]), "instance")
                 .appendField("MLX90614 read ambient temperature (C)");
             this.setOutput(true, ["double", "Number"]);
             this.setColour(color_MLX90614);
@@ -208,6 +223,7 @@ module.exports = function (Blockly) {
         init: function () {
             this.appendDummyInput()
                 .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/mlx90614.png`, 25, 25, { alt: "*", flipRtl: "FALSE" }))
+                .appendField(new Blockly.FieldVariable("mlx90614_1", null, ["Plugin.mlx90614_x"], ["Plugin.mlx90614_x"]), "instance")
                 .appendField("MLX90614 read ambient temperature (F)");
             this.setOutput(true, ["double", "Number"]);
             this.setColour(color_MLX90614);
@@ -216,17 +232,68 @@ module.exports = function (Blockly) {
         }
     };
 
+    //////////////////////////////Loadcell/////////////////////////////////////////////
+    Blockly.Blocks['set_load_cell'] = {
+        init: function () {
+            this.appendDummyInput()
+                .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/loadcell.png`, 25, 25, { alt: "*", flipRtl: "FALSE" }))
+                .appendField(new Blockly.FieldVariable("LoadCell1", null, ["Plugin.loadcell"], ["Plugin.loadcell"]), "instance")
+                .appendField("Setup Load Cell ")
+                .appendField("(D-OUT Pin");
+            this.appendValueInput("DOUTPin")
+                .setCheck("Number");
+            this.appendValueInput("SCKPin")
+                .setCheck("Number")
+                .appendField(", SCK Pin");
+            this.appendDummyInput()
+                .appendField(")");
+            this.setInputsInline(true);
+            this.setPreviousStatement(true, null);
+            this.setNextStatement(true, null);
+            this.setColour(color_loadcell);
+            this.setTooltip("set PIN Load cell Sensor");
+            this.setHelpUrl("");
+        }
+    };
+    Blockly.Blocks['ready_load_cell'] = {
+        init: function () {
+            this.appendDummyInput()
+                .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/loadcell.png`, 25, 25, { alt: "*", flipRtl: "FALSE" }))
+                .appendField(new Blockly.FieldVariable("LoadCell1", null, ["Plugin.loadcell"], ["Plugin.loadcell"]), "instance")
+                .appendField("Is ready");
+                this.setOutput(true, null);
+            this.setColour(color_loadcell);
+            this.setTooltip("Is ready Load cell Sensor");
+            this.setHelpUrl("");
+        }
+    };
+    Blockly.Blocks['read_load_cell'] = {
+        init: function () {
+            this.appendDummyInput()
+                .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/loadcell.png`, 25, 25, { alt: "*", flipRtl: "FALSE" }))
+                .appendField(new Blockly.FieldVariable("LoadCell1", null, ["Plugin.loadcell"], ["Plugin.loadcell"]), "instance")
+                .appendField("Read load cell sensor");
+                this.setOutput(true, null);
+            this.setColour(color_loadcell);
+            this.setTooltip("read Load cell Sensor");
+            this.setHelpUrl("");
+        }
+    };
+
+
+
     //////////////////////////////DHT11/////////////////////////////////////////////
     Blockly.Blocks['KBD_dht_setup'] = {
         init: function () {
             this.appendDummyInput()
                 .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/dht_icon.png`, 25, 25, { alt: "*", flipRtl: "FALSE" }))
-                .appendField(new Blockly.FieldVariable("DHT-1", null, ["Plugin.DHTesp"], ["Plugin.DHTesp"]), "instance")
+                .appendField(new Blockly.FieldVariable("DHT-1", null, ["Plugin.dht"], ["Plugin.dht"]), "instance")
                 .appendField("Setup")
                 .appendField(new Blockly.FieldDropdown([["DHT11", "DHTesp::DHT11"], ["DHT22", "DHTesp::DHT22"]]), "dht_type")
 
             this.appendValueInput("dht_PIN")
                 .setCheck("Number")
+                .appendField("Pin");
             this.setInputsInline(true);
             this.setPreviousStatement(true, null);
             this.setNextStatement(true, null);
@@ -240,7 +307,7 @@ module.exports = function (Blockly) {
         init: function () {
             this.appendDummyInput()
                 .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/dht_icon.png`, 25, 25, { alt: "*", flipRtl: "FALSE" }))
-                .appendField(new Blockly.FieldVariable("DHT-1", null, ["Plugin.DHTesp"], ["Plugin.DHTesp"]), "instance")
+                .appendField(new Blockly.FieldVariable("DHT-1", null, ["Plugin.dht"], ["Plugin.dht"]), "instance")
                 .appendField("read temperature °C");
             this.setInputsInline(true);
             this.setOutput(true, ["float", "Number"]);
@@ -254,7 +321,7 @@ module.exports = function (Blockly) {
         init: function () {
             this.appendDummyInput()
                 .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/dht_icon.png`, 25, 25, { alt: "*", flipRtl: "FALSE" }))
-                .appendField(new Blockly.FieldVariable("DHT-1", null, ["Plugin.DHTesp"], ["Plugin.DHTesp"]), "instance")
+                .appendField(new Blockly.FieldVariable("DHT-1", null, ["Plugin.dht"], ["Plugin.dht"]), "instance")
                 .appendField("read humidity %");
             this.setInputsInline(true);
             this.setOutput(true, ["float", "Number"]);

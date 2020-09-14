@@ -1,6 +1,6 @@
 C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\build\ff-ff-ff-ff-ff-ff\Adafruit_MLX90614.o: \
- C:\Users\yewuy\AppData\Local\Programs\kbide\plugins\kbide-mlx90614-master\src\Adafruit_MLX90614.cpp \
- C:\Users\yewuy\AppData\Local\Programs\kbide\plugins\kbide-mlx90614-master\src\Adafruit_MLX90614.h \
+ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include\Adafruit_MLX90614.cpp \
+ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include\Adafruit_MLX90614.h \
  C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\lib\include/Arduino.h \
  C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\sdk\include\newlib/stdint.h \
  C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\sdk\include\newlib/machine/_default_types.h \
