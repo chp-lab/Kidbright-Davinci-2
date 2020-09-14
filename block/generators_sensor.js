@@ -2,13 +2,13 @@ module.exports = function (Blockly) {
 	'use strict';
 	
 	Blockly.JavaScript['setup_thermistor_pin'] = function (block) {
-		var text_thermistor_pin = block.getFieldValue('THERMISTOR_PIN');
+		var thermistor_pin = Blockly.JavaScript.valueToCode(block, 'thermistor_pin', Blockly.JavaScript.ORDER_ATOMIC);
 		var code = `
 			#EXTINC
 				#include <KB_DAVINCI.h>
 			#END
 			#VARIABLE
-				int THERMISTOR_PIN = ${text_thermistor_pin};
+				int THERMISTOR_PIN = ${thermistor_pin};
 				#define VOLTAGE_INPUT 3.30
 				#define NOMINAL_TEMP 25
 				#define NOMINAL_RESISTANCE 100000
@@ -45,7 +45,7 @@ module.exports = function (Blockly) {
 ///------------------------------------------------------------------------------------------------------------------------------------	
 
 Blockly.JavaScript['setup_LDR_pin'] = function (block) {
-	var LDR_pin = block.getFieldValue('LDR_PIN');
+	var LDR_pin  = Blockly.JavaScript.valueToCode(block, 'LDR_PIN', Blockly.JavaScript.ORDER_ATOMIC);
 	var code = `
 		#EXTINC
 			#include "KB_DAVINCI.h"

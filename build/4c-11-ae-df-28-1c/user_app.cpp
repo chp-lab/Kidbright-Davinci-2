@@ -4,55 +4,36 @@
 #include <WiFiAP.h>
 #include <WebServer.h>
 
-#include <SSD1306Wire.h>
+#include "Servo.h"
 #include <KB_DAVINCI.h>
 
-SSD1306Wire oled1(0x3c, 5, 22);
-KB_DAVINCII2C I2C_PORT;
+Servo Servo1;
+KB_DAVINCIBTN_DI1 BTN1;
+KB_DAVINCIBTN_DI2 BTN2;
 
 
 
 void setup()
 {
-  I2C_PORT.begin();
+  BTN1.init();
+BTN2.init();
   Serial.begin(115200);
 
-  
-
-  
-
-  oled1.init();
-  oled1.flipScreenVertically();
-  oled1.setFont(ArialMT_Plain_10);
-
-
-
-  		
-  		
-  		
-
-  oled1.setFont(ArialMT_Plain_10);
-  oled1.drawString(0,0,String(String("I2C Block Example")));
-  oled1.display();
+          
+          
+            Servo1.attach(32);
 }
 void loop()
 {
-    oled1.display();
-  if (
-  			I2C_PORT.scanI2CDevice()
-  		 != 0) {
-    oled1.setFont(ArialMT_Plain_10);
-    oled1.drawString(0,20,String(((String("Number I2C Device : ")+String(
-    			I2C_PORT.scanI2CDevice()
-    		)))));
-  } else {
-    oled1.setFont(ArialMT_Plain_10);
-    oled1.drawString(0,20,String(((String(
-    			I2C_PORT.scanI2CDevice()
-    		)))));
-    oled1.setFont(ArialMT_Plain_10);
-    oled1.drawString(0,30,String(String("No I2C device")));
-  }
+    if (
+  		    BTN1.pressed()
+  		) {
+                Servo1.write(50);
+            } else if (
+  		    BTN2.pressed()
+  		) {
+                Servo1.write((-50));
+            }
 
   
 }

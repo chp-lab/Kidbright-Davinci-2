@@ -25,7 +25,9 @@ module.exports = function (Blockly) {
 			this.appendDummyInput()
 				.appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/music.png`, 25, 25, { alt: "*", flipRtl: "FALSE" }))
 				.appendField("Set up Tempo : ")
-				.appendField(new Blockly.FieldNumber(60, 0, 255), "value_tempo");
+			this.appendValueInput("tempo")
+				.setCheck("Number")
+			this.setInputsInline(true);  	
 			this.setPreviousStatement(true, null);
 			this.setNextStatement(true, null);
 			this.setColour(music_colour);

@@ -6,9 +6,12 @@
 #include "KB_DAVINCIRGB.h"
 #include "KB_DAVINCII2C.h"
 #include "KB_DAVINCIBTN_DI1.h"
-#include "KB_DAVINCIBTN_DI2.h" 
+#include "KB_DAVINCIBTN_DI2.h"
 #include "KB_DAVINCIBUZZER.h"
 #include "KB_DAVINCILDR.h"
+#include "KB_DAVINCIPIR.h"
+#include "KB_DAVINCIDistance.h"
+#include "KB_DAVINCISOUND.h"
 
 #if defined(KB_DAVINCI_H)
 	#define KBD_R_PIN 21
