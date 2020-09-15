@@ -16,7 +16,7 @@
 ### แนะนำเมนู block ของ Kid Bright Davinci 2.0
 บอร์ด Kid Bright Davinci 2.0 มีเมนูต่างๆที่ผู้ใช้งานสามารถเลือกใช้งานได้ ดังนี้
 - เมนู Blink :
-<br><img src="static/photo_readme/menu_icon_blink.jpg" height="80"><br>
+<br><img src="static/photo_readme/menu_icon_blink.jpg" height="40"><br>
   เป็นเมนูที่ใช้งานไฟ LED (RGB) ที่สามารถทำให้ติดและดับได้ โดยประกอบไปด้วย 2 block ได้แก่
 <br><img src="static/photo_readme/menu_block_bilnk.jpg" height="80"><br>
 
