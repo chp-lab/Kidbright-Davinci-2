@@ -37,13 +37,13 @@
 #### เมนู Music :
 <img src="static/photo_readme/menu_icon_music.jpg" height="55"><br>
   เป็นเมนูที่มี block สำหรับควบคุม Buzzer ของ Kid Bright Davinci 2.0 พร้อมทั้งมีตัวอย่างเพลงให้ลองทดสอบ
-<br><br><img src="static/photo_readme/menu_block_music.jpg" height="280" width="320"><br>
+<br><br><img src="static/photo_readme/menu_block_music.jpg" height="280" width="250"><br>
 
 --------------------------------
 #### เมนู RTC :
 <img src="static/photo_readme/menu_icon_rtc.jpg" height="55"><br>
   เป็นเมนูที่มี block สำหรับใช้งาน RTC Module ของ Kid Bright Davinci 2.0
-<br><br><img src="static/photo_readme/menu_block_rtc.jpg" height="280" width="320"><br>
+<br><br><img src="static/photo_readme/menu_block_rtc.jpg" height="280" width="250"><br>
 
 --------------------------------
 #### เมนู Servo:
@@ -74,7 +74,7 @@
 #### เมนู RGB :
 <img src="static/photo_readme/menu_icon_rgb.jpg" height="55"><br>
   เป็นเมนูที่มี block สำหรับควบคุม RGB LED บน Kid Bright Davinci 2.0
-<br><br><img src="static/photo_readme/menu_block_rgb.jpg" height="280" width="320"><br>
+<br><br><img src="static/photo_readme/menu_block_rgb.jpg" height="280" width="250"><br>
 
 --------------------------------
 #### เมนู Button :
