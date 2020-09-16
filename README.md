@@ -62,7 +62,7 @@
 <img src="static/photo_readme/menu_icon_exsensor.jpg" height="55"><br>
   เป็นเมนูที่มี block สำหรับใช้งาน Thermistor (วัดอุณหภูมิ) และ LDR (วัดความสว่างความเข้มแสง) ที่อยู่บน Kid Bright Davinci 2.0
 <br><br><img src="static/photo_readme/menu_block_exsensor_1.jpg" height="280" width="320"><br>
-<br><br><img src="static/photo_readme/menu_block_exsensor_2.jpg" height="280" width="320"><br>
+<img src="static/photo_readme/menu_block_exsensor_2.jpg" height="280" width="320"><br>
 
 --------------------------------
 #### เมนู WiFi :
@@ -98,12 +98,12 @@
 ### ตัวอย่างการใช้งาน block ต่างๆ
   โดยการเริ่มการใช้งานนั้น ซึ่งมีตัวอย่างของการต่อ block สามารถเข้าได้ดังนี้
 #### 1.คลิกเลือก Examples & tutorial :
-<img src="static/photo_readme/example_1 .jpg" height="90"><br>
+<img src="static/photo_readme/example_1.jpg" height="90"><br>
 
 #### 2.จากนั้นจะพบกับ memu Board  Examples:
    โดยเมนูที่พบนั้นจะเป็น list folder ของตัวอย่างการต่อ blockly ทั้งหมด ที่สามารถใช้งานได้บน Kid Bright Davinci 2.0
-<img src="static/photo_readme/example_2 .jpg" height="320"><br>
+<img src="static/photo_readme/example_2.jpg" height="320"><br>
 
 #### 3.จากนั้นเมื่อคลิกตรง folder ที่ต้องการตัวอย่างนั้น
   โดยจะพบกับ ปุ่มเลือก open block ซึ่งเป็นการเปิด ตัวอย่างการใช้งาน และปุ่ม open code เป็นการเปิด ส่วนของ code c++ เพื่อศึกษาการทำงานแบบรูปแบบ coding หรือสามารถนำไปใช้งานบน arduino IDE ได้เช่นกัน
-<br><img src="static/photo_readme/example_3 .jpg" height="320"><br>
+<br><img src="static/photo_readme/example_3.jpg" height="320"><br>
