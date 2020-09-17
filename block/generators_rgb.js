@@ -54,10 +54,10 @@ module.exports = function (Blockly) {
 		return code;
 	};
 	Blockly.JavaScript['set_rgb'] = function (block) {
-		var r = block.getFieldValue('R');
-		var g = block.getFieldValue('G');
-		var b = block.getFieldValue('B');
 
+		var r = Blockly.JavaScript.valueToCode(block, 'r', Blockly.JavaScript.ORDER_ATOMIC);
+	    var g = Blockly.JavaScript.valueToCode(block, 'g', Blockly.JavaScript.ORDER_ATOMIC);
+	    var b = Blockly.JavaScript.valueToCode(block, 'b', Blockly.JavaScript.ORDER_ATOMIC);
 		var code = `
 		#EXTINC	
 				#include <KB_DAVINCI.h>
@@ -76,20 +76,19 @@ module.exports = function (Blockly) {
 	Blockly.JavaScript['rgb_color'] = function(block) {
 		var color = block.getFieldValue("COLOR");
 		var code = `
-		#EXTINC
-			#include <KB_DAVINCI.h>
-		#END
-		#VARIABLE
-			KB_DAVINCIRGB RGB; 			
-		#END
-		#SETUP
-			RGB.begin();
-			RGB.setCommonCathode(false);
-		#END
-		
-			RGB.${color}();
-	`;
-
+			#EXTINC
+				#include <KB_DAVINCI.h>
+			#END
+			#VARIABLE
+				KB_DAVINCIRGB RGB; 			
+			#END
+			#SETUP
+				RGB.begin();
+				RGB.setCommonCathode(false);
+			#END
+			
+			    RGB.${color}();
+		`;
 		return code;
 	}
 	Blockly.JavaScript['rgb_red'] = function (block) {

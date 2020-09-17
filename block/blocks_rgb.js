@@ -12,12 +12,20 @@ module.exports = function (Blockly) {
             this.appendDummyInput()
                 .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/rgb-icon.png`, 25, 25, { alt: "*", flipRtl: "FALSE" }))
                 .appendField("set RGB color: ")
+                
+            this.appendValueInput("r")
+                .setCheck("Number")
                 .appendField("R")
-                .appendField(new Blockly.FieldNumber(0, 0, 255), "R")
+
+              this.appendValueInput("g")
+                .setCheck("Number")
                 .appendField("G")
-                .appendField(new Blockly.FieldNumber(0, 0, 255), "G")
+
+                this.appendValueInput("b")
+                .setCheck("Number")
                 .appendField("B")
-                .appendField(new Blockly.FieldNumber(0, 0, 255), "B");
+
+            this.setInputsInline(true);
             this.setPreviousStatement(true, null);
             this.setNextStatement(true, null);
             this.setColour(music_colour_setting);

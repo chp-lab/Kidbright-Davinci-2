@@ -29,7 +29,7 @@ return code;
 };
 
 Blockly.JavaScript['setup_tempo'] = function(block) {
-  var number_value_tempo = block.getFieldValue('value_tempo');
+  var number_value_tempo = Blockly.JavaScript.valueToCode(block, 'tempo', Blockly.JavaScript.ORDER_ATOMIC);
   var code = `
   #EXTINC
     #include <KB_DAVINCI.h>

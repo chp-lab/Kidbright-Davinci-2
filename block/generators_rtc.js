@@ -123,8 +123,6 @@ module.exports = function (Blockly) {
     
         printDateTime(now);
         Serial.println();
-    
-        delay(5000); // ten seconds
         `;
         return code;
       };

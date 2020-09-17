@@ -8,5 +8,5 @@ module.exports = {
     email : 'ch.ee.psu@outlook.com',
     git : 'https://github.com/chp-lab/Kidbright-Davinci-2/',
     image : '/static/FRONT.png',
-    version : '1.0.2'
+    version : '1.0.5'
 };

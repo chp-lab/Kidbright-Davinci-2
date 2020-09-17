@@ -4,9 +4,9 @@
 #include <WiFiAP.h>
 #include <WebServer.h>
 
+#include <SSD1306Wire.h>
 
-
-
+SSD1306Wire oled1(0x3c, 13, 4);
 
 
 
@@ -15,28 +15,20 @@ void setup()
   
   Serial.begin(115200);
 
-        const int LED_WIFI = 12;
-        pinMode(LED_WIFI, OUTPUT);
-        digitalWrite(LED_WIFI, 1);
+  
 
+  
 
-
-      WiFi.begin("Yew@","YEWyew111");
-      while(WiFi.status() != WL_CONNECTED){
-        digitalWrite(LED_WIFI, 0);
-        delay(200);
-        digitalWrite(LED_WIFI, 1);
-        delay(200);
-        digitalWrite(LED_WIFI, 0);
-        delay(200);
-        digitalWrite(LED_WIFI, 1);
-        delay(200);
-      }
-        digitalWrite(LED_WIFI, 1);
+  oled1.init();
+  oled1.flipScreenVertically();
+  oled1.setFont(ArialMT_Plain_10);
 }
 void loop()
 {
-    Serial.println((WiFi.localIP().toString()));
+    oled1.clear();
+  oled1.setFont(ArialMT_Plain_16);
+  oled1.drawString(0,0,String(String("noootttttttttttt")));
+  oled1.display();
 
   
 }

@@ -186,4 +186,9 @@ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\build\4c-
  C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\lib\libraries_include/WiFiAP.h \
  C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\lib\libraries_include/WebServer.h \
  C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\lib\libraries_include/HTTP_Method.h \
- C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\lib\libraries_include/detail/RequestHandler.h
+ C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\lib\libraries_include/detail/RequestHandler.h \
+ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include/SSD1306Wire.h \
+ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include/OLEDDisplay.h \
+ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include/OLEDDisplayFonts.h \
+ C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\lib\libraries_include/Wire.h \
+ C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\lib\include/esp32-hal.h
