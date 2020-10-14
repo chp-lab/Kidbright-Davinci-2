@@ -257,6 +257,7 @@ module.exports = function (Blockly) {
 			int LOADCELL_SCK_PIN = ${value_SCKPin};
 
 			HX711 ${variable_instance};
+
 		#END
 		#SETUP
 			${variable_instance}.begin(LOADCELL_DOUT_PIN, LOADCELL_SCK_PIN);
@@ -270,9 +271,19 @@ module.exports = function (Blockly) {
 		var code = `${variable_instance}.is_ready()`;
 		return [code, Blockly.JavaScript.ORDER_ATOMIC];
 	};
-    Blockly.JavaScript['read_load_cell'] = function (block) {
+	Blockly.JavaScript['read_load_cell_g'] = function (block) {
 		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);
-		var code = `${variable_instance}.read()`;
+		var code = `(${variable_instance}.read()) / (4653251*1000)`;
+		return [code, Blockly.JavaScript.ORDER_ATOMIC];
+	};
+    Blockly.JavaScript['read_load_cell_kg'] = function (block) {
+		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);
+		var code = `(${variable_instance}.read()) / 4653251`;
+		return [code, Blockly.JavaScript.ORDER_ATOMIC];
+	};
+	Blockly.JavaScript['read_load_cell_N'] = function (block) {
+		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);
+		var code = `(${variable_instance}.read()) / (4653251*1000*1000)`;
 		return [code, Blockly.JavaScript.ORDER_ATOMIC];
 	};
 

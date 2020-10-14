@@ -470,7 +470,9 @@ module.exports = {
 									</block>`
 				},
 				'ready_load_cell',
-				'read_load_cell',
+				'read_load_cell_g',
+				'read_load_cell_kg',
+				'read_load_cell_N',
 				{
 					xml: `<sep gap="28"></sep><label text="Kid Bright Davinci Sensor : DHT" web-class="headline"></label>`
 				},

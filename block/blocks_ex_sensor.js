@@ -267,20 +267,42 @@ module.exports = function (Blockly) {
             this.setHelpUrl("");
         }
     };
-    Blockly.Blocks['read_load_cell'] = {
+    Blockly.Blocks['read_load_cell_kg'] = {
         init: function () {
             this.appendDummyInput()
                 .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/loadcell.png`, 25, 25, { alt: "*", flipRtl: "FALSE" }))
                 .appendField(new Blockly.FieldVariable("LoadCell1", null, ["Plugin.loadcell"], ["Plugin.loadcell"]), "instance")
-                .appendField("Read load cell sensor");
+                .appendField("Read load cell sensor (kg.)");
                 this.setOutput(true, null);
             this.setColour(color_loadcell);
-            this.setTooltip("read Load cell Sensor");
+            this.setTooltip("read Load cell Sensor (kg.)");
             this.setHelpUrl("");
         }
     };
-
-
+    Blockly.Blocks['read_load_cell_g'] = {
+        init: function () {
+            this.appendDummyInput()
+                .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/loadcell.png`, 25, 25, { alt: "*", flipRtl: "FALSE" }))
+                .appendField(new Blockly.FieldVariable("LoadCell1", null, ["Plugin.loadcell"], ["Plugin.loadcell"]), "instance")
+                .appendField("Read load cell sensor (g.)");
+                this.setOutput(true, null);
+            this.setColour(color_loadcell);
+            this.setTooltip("read Load cell Sensor (g.)");
+            this.setHelpUrl("");
+        }
+    };
+    Blockly.Blocks['read_load_cell_N'] = {
+        init: function () {
+            this.appendDummyInput()
+                .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/loadcell.png`, 25, 25, { alt: "*", flipRtl: "FALSE" }))
+                .appendField(new Blockly.FieldVariable("LoadCell1", null, ["Plugin.loadcell"], ["Plugin.loadcell"]), "instance")
+                .appendField("Read load cell sensor (N.)");
+                this.setOutput(true, null);
+            this.setColour(color_loadcell);
+            this.setTooltip("read Load cell Sensor (N.)");
+            this.setHelpUrl("");
+        }
+    };
 
     //////////////////////////////DHT11/////////////////////////////////////////////
     Blockly.Blocks['KBD_dht_setup'] = {

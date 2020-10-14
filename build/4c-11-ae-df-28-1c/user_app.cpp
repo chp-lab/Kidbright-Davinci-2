@@ -4,9 +4,10 @@
 #include <WiFiAP.h>
 #include <WebServer.h>
 
-#include <SSD1306Wire.h>
+#include <Adafruit_MLX90614.h>
+  			#include <Wire.h>
 
-SSD1306Wire oled1(0x3c, 13, 4);
+Adafruit_MLX90614 mlx90614_1 = Adafruit_MLX90614();
 
 
 
@@ -15,20 +16,15 @@ void setup()
   
   Serial.begin(115200);
 
-  
-
-  
-
-  oled1.init();
-  oled1.flipScreenVertically();
-  oled1.setFont(ArialMT_Plain_10);
+  	
+  	
+  			mlx90614_1.begin(0);
 }
 void loop()
 {
-    oled1.clear();
-  oled1.setFont(ArialMT_Plain_16);
-  oled1.drawString(0,0,String(String("noootttttttttttt")));
-  oled1.display();
+    Serial.println(((String("obj")+String(mlx90614_1.readObjectTempC()))));
+  Serial.println(((String("am")+String(mlx90614_1.readAmbientTempC()))));
+  delay(200);
 
   
 }
