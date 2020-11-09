@@ -4,143 +4,59 @@
 #include <WiFiAP.h>
 #include <WebServer.h>
 
-#include <Wire.h>
-              #include <RtcDS1307.h>
-#include <SSD1306Wire.h>
+#include <Adafruit_MLX90614.h>
+#include "Wire.h"
+                   #include <Adafruit_SSD1306.h>
 
-#define SDA  5
-              #define SCL  22
-              #define countof(a) (sizeof(a) / sizeof(a[0]))
+Adafruit_MLX90614 mlx90614_1 = Adafruit_MLX90614(0x5A);
+#define SCREEN_WIDTH 128 // OLED display width, in pixels
+                  #define SCREEN_HEIGHT 64 // OLED display height, in pixels
 
-              int get_day = 0;
-              int get_mouth = 0;
-              int get_year = 0;
-              int get_hour = 0;
-              int get_minute = 0;
-              int get_second = 0;
-              String get_dateTime;
-              RtcDS1307<TwoWire> RTC1(Wire);
-SSD1306Wire oled1(0x3c, 5, 22);
+                  Adafruit_SSD1306 oled1(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
-void printDateTime(const RtcDateTime& dt)
-              {
-                  char datestring[20];
 
-                  snprintf_P(datestring,
-                          countof(datestring),
-                          PSTR("%02u/%02u/%04u %02u:%02u:%02u"),
-                          dt.Day(),
-                          dt.Month(),
-                          dt.Year(),
-                          dt.Hour(),
-                          dt.Minute(),
-                          dt.Second() );
-
-                      get_day =  dt.Day();
-                      get_mouth = dt.Month();
-                      get_year = dt.Year();
-                      get_hour = dt.Hour();
-                      get_minute = dt.Minute();
-                      get_second = dt.Second();
-                      get_dateTime = datestring;
-              }
 
 void setup()
 {
-  Serial.begin(115200);
+  
+  mlx90614_1.begin(5,22);
 
-                      Serial.print("compiled: ");
-                      Serial.print(__DATE__);
-                      Serial.println(__TIME__);
+              
 
-                      RTC1.Begin(SDA,SCL);
+              
+              oled1.begin(SSD1306_SWITCHCAPVCC, 0x3C);
 
-                      RtcDateTime compiled = RtcDateTime(__DATE__, __TIME__);
-                      printDateTime(compiled);
-                      Serial.println();
 
-                      if (!RTC1.IsDateTimeValid())
-                      {
-                          if (RTC1.LastError() != 0)
-                          {
-                              Serial.print("RTC communications error = ");
-                              Serial.println(RTC1.LastError());
-                          }
-                          else
-                          {
-                              Serial.println("RTC lost confidence in the DateTime!");
-                              RTC1.SetDateTime(compiled);
-                          }
-                      }
 
-                      if (!RTC1.GetIsRunning())
-                      {
-                          Serial.println("RTC was not actively running, starting now");
-                          RTC1.SetIsRunning(true);
-                      }
-
-                      RtcDateTime now = RTC1.GetDateTime();
-                      if (now < compiled)
-                      {
-                          Serial.println("RTC is older than compile time!  (Updating DateTime)");
-                          RTC1.SetDateTime(compiled);
-                      }
-                      else if (now > compiled)
-                      {
-                          Serial.println("RTC is newer than compile time. (this is expected)");
-                      }
-                      else if (now == compiled)
-                      {
-                          Serial.println("RTC is the same as compile time! (not expected but all is fine)");
-                      }
-                      RTC1.SetSquareWavePin(DS1307SquareWaveOut_Low);
-  oled1.init();
-  oled1.flipScreenVertically();
-  oled1.setFont(ArialMT_Plain_10);
+          oled1.clearDisplay();
+          oled1.display();
+          oled1.setTextSize(1);
+          oled1.setCursor(0,0);
+          oled1.print("Ambient Temp: ");
 }
 void loop()
 {
-    oled1.clear();
-          if (!RTC1.IsDateTimeValid())
-          {
-              if (RTC1.LastError() != 0)
-              {
-                  Serial.print("RTC communications error = ");
-                  Serial.println(RTC1.LastError());
-              }
-              else
-              {
-                  Serial.println("RTC lost confidence in the DateTime!");
-              }
-          }
-          RtcDateTime now = RTC1.GetDateTime();
-          printDateTime(now);
-          Serial.println();
-  oled1.setFont(ArialMT_Plain_10);
-  oled1.drawString(0,0,String((
-              get_year
-          )));
-  oled1.setFont(ArialMT_Plain_10);
-  oled1.drawString(0,10,String((
-                get_mouth
-          )));
-  oled1.setFont(ArialMT_Plain_10);
-  oled1.drawString(0,20,String((
-                get_day
-          )));
-  oled1.setFont(ArialMT_Plain_10);
-  oled1.drawString(0,30,String((
-                get_hour
-          )));
-  oled1.setFont(ArialMT_Plain_10);
-  oled1.drawString(0,40,String((
-                get_minute
-          )));
-  oled1.setFont(ArialMT_Plain_10);
-  oled1.drawString(0,50,String((
-                get_second
-          )));
-  oled1.display();
+            oled1.clearDisplay();
+          oled1.display();
+          oled1.setTextSize(1);
+          oled1.setCursor(0,0);
+          oled1.print("Ambient Temp: ");
+          oled1.setTextSize(2);
+          oled1.setCursor(0,10);
+          oled1.print(" ");
+          oled1.setTextSize(1);
+          oled1.cp437(true);
+          oled1.write(3);
+          oled1.setTextSize(2);
+          oled1.print("C");
+          oled1.setTextSize(1);
+          oled1.setCursor(0, 35);
+          oled1.print("Object Temp: ");
+          oled1.setTextSize(2);
+          oled1.setCursor(0, 45);
+          oled1.print(" %");
+          oled1.display();
+  delay(200);
 
   
 }

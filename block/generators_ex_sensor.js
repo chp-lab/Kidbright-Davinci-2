@@ -205,44 +205,49 @@ module.exports = function (Blockly) {
 
 	//////////////////////////////MLX90614/////////////////////////////////////////////
 	Blockly.JavaScript['KBD_beginMLX90614'] = function (block) {
+		var value_addr = block.getFieldValue('ADDR');
+		var value_sda = Blockly.JavaScript.valueToCode(block, 'SDA', Blockly.JavaScript.ORDER_ATOMIC);
 		var value_scl = Blockly.JavaScript.valueToCode(block, 'SCL', Blockly.JavaScript.ORDER_ATOMIC);
 		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);
 		var code = `
 	#EXTINC
 			#include <Adafruit_MLX90614.h>
-			#include <Wire.h>
+		
 	#END
 	#VARIABLE
-			Adafruit_MLX90614 ${variable_instance} = Adafruit_MLX90614();
+			Adafruit_MLX90614 ${variable_instance} = Adafruit_MLX90614(${value_addr});
 	#END
-			${variable_instance}.begin(0);
+			${variable_instance}.begin(${value_sda},${value_scl});
 	`;
 		return code;
 	};
-
-	Blockly.JavaScript['KBD_read_object_temp_c'] = function (block) {
+	Blockly.JavaScript['kbd_read_object_temp_c'] = function (block) {
+		var number_add_temp_value = block.getFieldValue('add_temp_value');
 		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);
-		var code = `${variable_instance}.readObjectTempC()`;
-		return [code, Blockly.JavaScript.ORDER_ATOMIC];
+		var code = `${variable_instance}.readObjectTempC(${number_add_temp_value})`;
+		return [code, Blockly.JavaScript.ORDER_NONE];
 	};
-
+	
 	Blockly.JavaScript['KBD_read_object_temp_f'] = function (block) {
+		var number_add_temp_value = block.getFieldValue('add_temp_value');
 		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);
-		var code = `${variable_instance}.readObjectTempF()`;
-		return [code, Blockly.JavaScript.ORDER_ATOMIC];
+		var code = `${variable_instance}.readObjectTempF(${number_add_temp_value})`;
+		return [code, Blockly.JavaScript.ORDER_NONE];
 	};
 
 	Blockly.JavaScript['KBD_read_ambient_temp_c'] = function (block) {
+		var number_add_temp_value = block.getFieldValue('add_temp_value');
 		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);
-		var code = `${variable_instance}.readAmbientTempC()`;
-		return [code, Blockly.JavaScript.ORDER_ATOMIC];
+		var code = `${variable_instance}.readAmbientTempC(${number_add_temp_value})`;
+		return [code, Blockly.JavaScript.ORDER_NONE];
+	};
+	Blockly.JavaScript['KBD_read_ambient_temp_f'] = function (block) {
+		var number_add_temp_value = block.getFieldValue('add_temp_value');
+		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);
+		var code = `${variable_instance}.readAmbientTempF(${number_add_temp_value})`;
+		return [code, Blockly.JavaScript.ORDER_NONE];
 	};
 
-	Blockly.JavaScript['KBD_read_ambient_temp_f'] = function (block) {
-		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);
-		var code = `${variable_instance}.readAmbientTempF()`;
-		return [code, Blockly.JavaScript.ORDER_ATOMIC];
-	};
 	//////////////////////////////load cell/////////////////////////////////////////////
 	Blockly.JavaScript['set_load_cell'] = function (block) {
 		var value_DOUTPin = Blockly.JavaScript.valueToCode(block, 'DOUTPin', Blockly.JavaScript.ORDER_ATOMIC);
@@ -286,12 +291,6 @@ module.exports = function (Blockly) {
 		var code = `(${variable_instance}.read()) / (4653251*1000*1000)`;
 		return [code, Blockly.JavaScript.ORDER_ATOMIC];
 	};
-
-
-
-
-
-
 	//////////////////////////////DHT/////////////////////////////////////////////
 	  Blockly.JavaScript['KBD_dht_setup'] = function(block) {
 		var variable_instance = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('instance'), Blockly.Variables.NAME_TYPE);

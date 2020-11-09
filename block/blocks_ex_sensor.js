@@ -158,80 +158,105 @@ module.exports = function (Blockly) {
 
 
     //////////////////////////////MLX90614/////////////////////////////////////////////
+
     Blockly.Blocks['KBD_beginMLX90614'] = {
         init: function () {
-            this.appendDummyInput()
-                .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/mlx90614.png`, 25, 25, { alt: "*", flipRtl: "FALSE" }))
-                .appendField(new Blockly.FieldVariable("mlx90614_1", null, ["Plugin.mlx90614_x"], ["Plugin.mlx90614_x"]), "instance")
-                .appendField("Setup MLX90614 pin ( SDA [GPIO21]");
-            this.appendDummyInput()
-                .appendField(", SCL");
-            this.appendValueInput("SCL")
-                .setCheck("Number");
-            this.appendDummyInput()
-                .appendField(")");
-            this.setInputsInline(true);
-
-            this.setPreviousStatement(true, null);
-            this.setNextStatement(true, null);
-            this.setColour(color_MLX90614);
-            this.setTooltip("start sensor MLX90614");
-            this.setHelpUrl("");
+          this.appendDummyInput()
+          .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/mlx90614.png`, 25, 25, { alt: "*", flipRtl: "FALSE" }))
+          .appendField(new Blockly.FieldVariable("mlx90614_1", null, ["Plugin.mlx90614_x"], ["Plugin.mlx90614_x"]), "instance")
+            .appendField("begin address")
+            .appendField(new Blockly.FieldTextInput("0x5A"), "ADDR");
+          this.appendDummyInput()
+            .appendField("pin (SDA");
+          this.appendValueInput("SDA")
+            .setCheck("Number")
+          this.appendDummyInput()
+            .appendField(", SCL");
+          this.appendValueInput("SCL")
+            .setCheck("Number");
+          this.appendDummyInput()
+            .appendField(")");
+          this.setInputsInline(true);
+          this.setPreviousStatement(true, null);
+          this.setNextStatement(true, null);
+          this.setColour(color_MLX90614);
+          this.setTooltip("start sensor MLX90614");
+          this.setHelpUrl("");
         }
-    };
-
-    Blockly.Blocks['KBD_read_object_temp_c'] = {
-        init: function () {
-            this.appendDummyInput()
-                .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/mlx90614.png`, 25, 25, { alt: "*", flipRtl: "FALSE" }))
-                .appendField(new Blockly.FieldVariable("mlx90614_1", null, ["Plugin.mlx90614_x"], ["Plugin.mlx90614_x"]), "instance")
-                .appendField("MLX90614 read object temperature (C)");
-            this.setOutput(true, ["double", "Number"]);
-            this.setColour(color_MLX90614);
-            this.setTooltip("MLX90614 read object temperature (C)");
-            this.setHelpUrl("");
+      };
+      
+      Blockly.Blocks['kbd_read_object_temp_c'] = {
+        init: function() {
+          this.appendDummyInput()
+              .setAlign(Blockly.ALIGN_RIGHT)
+              .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/mlx90614.png`, 25, 25, { alt: "*", flipRtl: "FALSE" }))
+              .appendField(new Blockly.FieldVariable("mlx90614_1", null, ["Plugin.mlx90614_x"], ["Plugin.mlx90614_x"]), "instance")
+              .appendField("MLX90614 read object temperature (C)")
+              .appendField(",")
+              .appendField("Temp offset")
+              .appendField(new Blockly.FieldNumber(0, 0, 1000), "add_temp_value")
+              .appendField(" (C)");
+          this.setInputsInline(true);
+          this.setOutput(true, null);
+          this.setColour(color_MLX90614);
+       this.setTooltip("MLX90614 read object temperature (C)");
+       this.setHelpUrl("");
         }
-    };
-
+      };  
     Blockly.Blocks['KBD_read_object_temp_f'] = {
-        init: function () {
-            this.appendDummyInput()
-                .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/mlx90614.png`, 25, 25, { alt: "*", flipRtl: "FALSE" }))
-                .appendField(new Blockly.FieldVariable("mlx90614_1", null, ["Plugin.mlx90614_x"], ["Plugin.mlx90614_x"]), "instance")
-                .appendField("MLX90614 read object temperature (F)");
-            this.setOutput(true, ["double", "Number"]);
-            this.setColour(color_MLX90614);
-            this.setTooltip("MLX90614 read object temperature (F)");
-            this.setHelpUrl("");
+        init: function() {
+          this.appendDummyInput()
+              .setAlign(Blockly.ALIGN_RIGHT)
+              .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/mlx90614.png`, 25, 25, { alt: "*", flipRtl: "FALSE" }))
+              .appendField(new Blockly.FieldVariable("mlx90614_1", null, ["Plugin.mlx90614_x"], ["Plugin.mlx90614_x"]), "instance")
+              .appendField("MLX90614 read object temperature (F)")
+              .appendField(",")
+              .appendField("Temp offset")
+              .appendField(new Blockly.FieldNumber(0, 0, 1000), "add_temp_value")
+              .appendField(" (F)");
+          this.setInputsInline(true);
+          this.setOutput(true, null);
+          this.setColour(color_MLX90614);
+          this.setTooltip("MLX90614 read object temperature (F)");
+       this.setHelpUrl("");
         }
-    };
-
+      };  
     Blockly.Blocks['KBD_read_ambient_temp_c'] = {
-        init: function () {
-            this.appendDummyInput()
-                .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/mlx90614.png`, 25, 25, { alt: "*", flipRtl: "FALSE" }))
-                .appendField(new Blockly.FieldVariable("mlx90614_1", null, ["Plugin.mlx90614_x"], ["Plugin.mlx90614_x"]), "instance")
-                .appendField("MLX90614 read ambient temperature (C)");
-            this.setOutput(true, ["double", "Number"]);
-            this.setColour(color_MLX90614);
-            this.setTooltip("MLX90614 read object temperature (C)");
-            this.setHelpUrl("");
+        init: function() {
+          this.appendDummyInput()
+              .setAlign(Blockly.ALIGN_RIGHT)
+              .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/mlx90614.png`, 25, 25, { alt: "*", flipRtl: "FALSE" }))
+              .appendField(new Blockly.FieldVariable("mlx90614_1", null, ["Plugin.mlx90614_x"], ["Plugin.mlx90614_x"]), "instance")
+              .appendField("MLX90614 read ambient temperature (C)")
+              .appendField(",")
+              .appendField("Temp offset")
+              .appendField(new Blockly.FieldNumber(0, 0, 1000), "add_temp_value")
+              .appendField(" (C)");
+          this.setInputsInline(true);
+          this.setOutput(true, null);
+          this.setColour(color_MLX90614);
+          this.setTooltip("MLX90614 read ambient temperature (C)");
+       this.setHelpUrl("");
         }
-    };
-
-    Blockly.Blocks['KBD_read_ambient_temp_f'] = {
-        init: function () {
-            this.appendDummyInput()
-                .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/mlx90614.png`, 25, 25, { alt: "*", flipRtl: "FALSE" }))
-                .appendField(new Blockly.FieldVariable("mlx90614_1", null, ["Plugin.mlx90614_x"], ["Plugin.mlx90614_x"]), "instance")
-                .appendField("MLX90614 read ambient temperature (F)");
-            this.setOutput(true, ["double", "Number"]);
-            this.setColour(color_MLX90614);
-            this.setTooltip("MLX90614 read object temperature (F)");
-            this.setHelpUrl("");
+      }; 
+      Blockly.Blocks['KBD_read_ambient_temp_f'] = {
+        init: function() {
+          this.appendDummyInput()
+              .setAlign(Blockly.ALIGN_RIGHT)
+              .appendField(new Blockly.FieldImage(`file:///${dirIcon}/static/icons/mlx90614.png`, 25, 25, { alt: "*", flipRtl: "FALSE" }))
+              .appendField(new Blockly.FieldVariable("mlx90614_1", null, ["Plugin.mlx90614_x"], ["Plugin.mlx90614_x"]), "instance")
+              .appendField("MLX90614 read ambient temperature (F)")
+              .appendField(",")
+              .appendField("Temp offset")
+              .appendField(new Blockly.FieldNumber(0, 0, 1000), "add_temp_value")
+              .appendField(" (C)");
+          this.setInputsInline(true);
+          this.setOutput(true, null);
+          this.setColour(color_MLX90614);
+          this.setTooltip("MLX90614 read ambient temperature (F)");
+       this.setHelpUrl("");
         }
-    };
-
+      }; 
     //////////////////////////////Loadcell/////////////////////////////////////////////
     Blockly.Blocks['set_load_cell'] = {
         init: function () {

@@ -16,7 +16,11 @@
  ****************************************************/
 
 
-#include "Arduino.h"
+#if (ARDUINO >= 100)
+ #include "Arduino.h"
+#else
+ #include "WProgram.h"
+#endif
 #include "Wire.h"
 
 
@@ -41,23 +45,25 @@
 #define MLX90614_ID3 0x3E
 #define MLX90614_ID4 0x3F
 
-#define SDA 5
-#define SCL 22
 
 class Adafruit_MLX90614  {
  public:
   Adafruit_MLX90614(uint8_t addr = MLX90614_I2CADDR);
-  boolean begin(uint8_t wireNumber = 0);
+  boolean begin(uint8_t SDA_Pin,uint8_t SCL_Pin);
   uint32_t readID(void);
 
-  double readObjectTempC(void);
-  double readAmbientTempC(void);
-  double readObjectTempF(void);
-  double readAmbientTempF(void);
+  float add_valueTemp = 0;
+  double readObjectTempC(float add_valueTemp);
+  double readAmbientTempC(float add_valueTemp);
+  double readObjectTempF(float add_valueTemp);
+  double readAmbientTempF(float add_valueTemp);
 
  private:
   float readTemp(uint8_t reg);
-  uint8_t _wireNumber;
+
+  uint8_t  _SDAPin;
+  uint8_t  _SCLPin;
+
   uint8_t _addr;
   uint16_t read16(uint8_t addr);
   void write16(uint8_t addr, uint16_t data);

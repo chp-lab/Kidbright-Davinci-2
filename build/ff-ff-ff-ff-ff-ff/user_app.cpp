@@ -5,28 +5,58 @@
 #include <WebServer.h>
 
 #include <Adafruit_MLX90614.h>
-  			#include <Wire.h>
+#include "Wire.h"
+                   #include <Adafruit_SSD1306.h>
+                   #include <Setup_wire_OLED.h>
 
-Adafruit_MLX90614 mlx90614_1 = Adafruit_MLX90614();
+Adafruit_MLX90614 mlx90614_1 = Adafruit_MLX90614(0x5A);
+#define SCREEN_WIDTH 128 // OLED display width, in pixels
+                  #define SCREEN_HEIGHT 64 // OLED display height, in pixels
+                  Setup_wire_OLED Setup_wire = Setup_wire_OLED(0x3c);
+                  Adafruit_SSD1306 oled1(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
 
 
 void setup()
 {
   
-  Serial.begin(115200);
+  mlx90614_1.begin(5,22);
 
-  	
-  	
-  			mlx90614_1.begin(0);
+              
+
+              
+                  Setup_wire.begin(5,22);
+                  oled1.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+                  oled1.clearDisplay();
+                  oled1.setTextColor(WHITE);
+
+
+
+          oled1.clearDisplay();
+
+
+              oled1.setTextColor(WHITE);
+
+
+              oled1.display();
 }
 void loop()
 {
-    Serial.println(((String("obj ")+String(mlx90614_1.readObjectTempC())+String(" C"))));
-  Serial.println(((String("am ")+String(mlx90614_1.readAmbientTempC())+String(" C"))));
-  Serial.println(((String("obj ")+String(mlx90614_1.readObjectTempF())+String(" F"))));
-  Serial.println(((String("am ")+String(mlx90614_1.readAmbientTempF())+String(" F"))));
-  delay(2000);
+            oled1.clearDisplay();
+              oled1.setTextSize(2);
+              oled1.setCursor(0,0);
+              oled1.print(((String("Obj : ")+String((mlx90614_1.readObjectTempC(3)))+String("C"))));
+              oled1.setTextSize(2);
+              oled1.setCursor(0,15);
+              oled1.print(((String("Amb : ")+String((mlx90614_1.readAmbientTempC(0)))+String("C"))));
+              oled1.setTextSize(2);
+              oled1.setCursor(0,30);
+              oled1.print(((String("Obj : ")+String((mlx90614_1.readObjectTempF(0)))+String("F"))));
+              oled1.setTextSize(2);
+              oled1.setCursor(0,45);
+              oled1.print(((String("Amb : ")+String((mlx90614_1.readAmbientTempF(0)))+String("F"))));
+              oled1.display();
+  delay(500);
 
   
 }

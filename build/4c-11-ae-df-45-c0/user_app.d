@@ -187,11 +187,11 @@ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\build\4c-
  C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\lib\libraries_include/WebServer.h \
  C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\lib\libraries_include/HTTP_Method.h \
  C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\lib\libraries_include/detail/RequestHandler.h \
+ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include/Adafruit_MLX90614.h \
  C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\lib\libraries_include/Wire.h \
  C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\lib\include/esp32-hal.h \
- C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include/RtcDS1307.h \
- C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include/RtcDateTime.h \
- C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include/RtcUtility.h \
- C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include/SSD1306Wire.h \
- C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include/OLEDDisplay.h \
- C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include/OLEDDisplayFonts.h
+ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include/Adafruit_SSD1306.h \
+ C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\lib\libraries_include/SPI.h \
+ C:\Users\yewuy\AppData\Local\Programs\kbide\platforms\arduino-esp32\lib\include/esp32-hal-spi.h \
+ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include/Adafruit_GFX.h \
+ C:\Users\yewuy\AppData\Local\Programs\kbide\boards\Kidbright-Davinci-2\include/gfxfont.h

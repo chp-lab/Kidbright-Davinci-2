@@ -56,8 +56,8 @@ class SSD1306Wire : public OLEDDisplay {
     }
 
     bool connect() {
-#ifdef ARDUINO_ARCH_AVR 
-      Wire.begin();
+#ifdef ARDUINO_ARCH_AVR
+      Wire.begin(this->_sda, this->_scl);
 #else
       Wire.begin(this->_sda, this->_scl);
 #endif
@@ -113,7 +113,7 @@ class SSD1306Wire : public OLEDDisplay {
           for (x = minBoundX; x <= maxBoundX; x++) {
             if (k == 0) {
               Wire.beginTransmission(_address);
-              Wire.write(0x40);
+              Wire.write(0x45);
             }
 
             Wire.write(buffer[x + y * this->width()]);
@@ -146,7 +146,7 @@ class SSD1306Wire : public OLEDDisplay {
 
         for (uint16_t i=0; i < displayBufferSize; i++) {
           Wire.beginTransmission(this->_address);
-          Wire.write(0x40);
+          Wire.write(0x45);
           for (uint8_t x = 0; x < 16; x++) {
             Wire.write(buffer[i]);
             i++;
@@ -175,8 +175,8 @@ class SSD1306Wire : public OLEDDisplay {
 
     void initI2cIfNeccesary() {
       if (_doI2cAutoInit) {
-#ifdef ARDUINO_ARCH_AVR 
-      	Wire.begin();
+#ifdef ARDUINO_ARCH_AVR
+      	Wire.begin(this->_sda, this->_scl);
 #else
       	Wire.begin(this->_sda, this->_scl);
 #endif

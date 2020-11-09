@@ -3,40 +3,14 @@ const dirIcon = Vue.prototype.$global.board.board_info.dir;
 module.exports = {
 	blocks: [
 		{
-			name: 'Blink',
-			icon: `file:///${dirIcon}/static/icons/blink.png`,
-			index: 1,
-			color: "230",
-			blocks: [
-				{
-					xml:
-						`<block type="set_led_blink">
-							<value name="delay">
-								<shadow type="math_number">
-									<field name="NUM">1000</field>
-								</shadow>
-							</value>							
-						</block>`
-				}, 'led_blink'
-
-			]
-		},
-		{
-			name: 'Game',
-			icon: `file:///${dirIcon}/static/icons/game_icon.png`,
-			index: 1,
-			color: "230",
-			blocks: ['block_game_squid']
-		},
-		{
-			name: 'Display',
-			color: '230',
-			index: 2,
+			name: 'OLED Display',
 			icon: `file:///${dirIcon}/static/icons/icon_display.png`,
+			index: 1,
+			color: "230",
 			blocks: [
 				{
 					xml:
-						`<block type="i2c128x64_display_begin">
+						`<block type="OLED_begin">
 							<value name="SDA">
 								<shadow type="math_number">
 									<field name="NUM">5</field>
@@ -59,7 +33,7 @@ module.exports = {
 				},
 				{
 					xml:
-						`<block type="i2c128x64_display_image">
+						`<block type="OLED_display_image">
 							<value name="img">
 								<block type="variables_get">
 									<field name="VAR">img1</field>
@@ -92,11 +66,17 @@ module.exports = {
 							</value>
 						</block>`
 				},
-				"i2c128x64_display_clear",
-				"i2c128x64_display_display",
+
+
+
+				'OLED_display_display',
+				'OLED_clearDisplay',
+				'OLED_setTextColor_WHITE',
+				'OLED_setTextColor_BLACK_WHITE',
+
 				{
 					xml:
-						`<block type="i2c128x64_display_print">
+						`<block type="OLED_display_print_text">
 									  <value name="text">
 										  <shadow type="basic_string">
 											  <field name="VALUE">Hello world!</field>
@@ -116,32 +96,32 @@ module.exports = {
 				},
 				{
 					xml:
-						`<block type="i2c128x64_display_draw_line">
-									  <value name="x0">
+						`<block type="OLED_display_print_number">
+									  <value name="number_show">
 										  <shadow type="math_number">
-											  <field name="NUM">10</field>
+											  <field name="NUM">1234</field>
 										  </shadow>
 									  </value>
-									  <value name="y0">
+									  <value name="x">
 										  <shadow type="math_number">
-											  <field name="NUM">10</field>
+											  <field name="NUM">0</field>
 										  </shadow>
 									  </value>
-									  <value name="x1">
+									  <value name="y">
 										  <shadow type="math_number">
-											  <field name="NUM">100</field>
-										  </shadow>
-									  </value>
-									  <value name="y1">
-										  <shadow type="math_number">
-											  <field name="NUM">50</field>
+											  <field name="NUM">0</field>
 										  </shadow>
 									  </value>
 								  </block>`
 				},
+				'OLED_display_startscrollright',
+				'OLED_display_startscrollleft',
+				'OLED_display_startscroll_diagright',
+				'OLED_display_startscroll_diagleft',
+				'OLED_display_stop_scroll',
 				{
 					xml:
-						`<block type="i2c128x64_display_draw_rect">
+						`<block type="OLED_display_draw_rect">
 									  <value name="x">
 										  <shadow type="math_number">
 											  <field name="NUM">10</field>
@@ -166,18 +146,48 @@ module.exports = {
 				},
 				{
 					xml:
-						`<block type="i2c128x64_display_draw_circle">
+						`<block type="OLED_display_draw_RoundRect">
 									  <value name="x">
 										  <shadow type="math_number">
-											  <field name="NUM">64</field>
+											  <field name="NUM">10</field>
 										  </shadow>
 									  </value>
 									  <value name="y">
 										  <shadow type="math_number">
-											  <field name="NUM">32</field>
+											  <field name="NUM">10</field>
 										  </shadow>
 									  </value>
-									  <value name="r">
+									  <value name="width">
+										  <shadow type="math_number">
+											  <field name="NUM">50</field>
+										  </shadow>
+									  </value>
+									  <value name="height">
+										  <shadow type="math_number">
+											  <field name="NUM">30</field>
+										  </shadow>
+									  </value>
+									  <value name="radius">
+										  <shadow type="math_number">
+											  <field name="NUM">8</field>
+										  </shadow>
+									  </value>
+								  </block>`
+				},
+				{
+					xml:
+						`<block type="OLED_display_draw_Circle">
+									  <value name="x">
+										  <shadow type="math_number">
+											  <field name="NUM">20</field>
+										  </shadow>
+									  </value>
+									  <value name="y">
+										  <shadow type="math_number">
+											  <field name="NUM">35</field>
+										  </shadow>
+									  </value>
+									  <value name="height">
 										  <shadow type="math_number">
 											  <field name="NUM">20</field>
 										  </shadow>
@@ -186,54 +196,276 @@ module.exports = {
 				},
 				{
 					xml:
-						`<block type="i2c128x64_display_draw_progress_bar">
-									  <value name="x">
-										  <shadow type="math_number">
-											  <field name="NUM">0</field>
-										  </shadow>
-									  </value>
-									  <value name="y">
-										  <shadow type="math_number">
-											  <field name="NUM">32</field>
-										  </shadow>
-									  </value>
-									  <value name="width">
-										  <shadow type="math_number">
-											  <field name="NUM">120</field>
-										  </shadow>
-									  </value>
-									  <value name="height">
+						`<block type="OLED_display_draw_Triangle">
+									  <value name="X1">
 										  <shadow type="math_number">
 											  <field name="NUM">30</field>
 										  </shadow>
 									  </value>
-									  <value name="progress">
+									  <value name="Y1">
 										  <shadow type="math_number">
-											  <field name="NUM">50</field>
+											  <field name="NUM">15</field>
+										  </shadow>
+									  </value>
+								
+									  <value name="X2">
+										  <shadow type="math_number">
+											  <field name="NUM">0</field>
+										  </shadow>
+									  </value>
+									  <value name="Y2">
+										  <shadow type="math_number">
+											  <field name="NUM">60</field>
+										  </shadow>
+									  </value>
+
+									  <value name="X3">
+										  <shadow type="math_number">
+											  <field name="NUM">60</field>
+										  </shadow>
+									  </value>
+									  <value name="Y3">
+										  <shadow type="math_number">
+											  <field name="NUM">60</field>
 										  </shadow>
 									  </value>
 								  </block>`
 				},
-				{
-					xml:
-						`<block type="i2c128x64_display_draw_pixel">
-									  <value name="x">
-										  <shadow type="math_number">
-											  <field name="NUM">64</field>
-										  </shadow>
-									  </value>
-									  <value name="y">
-										  <shadow type="math_number">
-											  <field name="NUM">32</field>
-										  </shadow>
-									  </value>    
-								  </block>`
-				},
-				"i2c128x64_display_width",
-				"i2c128x64_display_height",
-				"basic_string"
+				'basic_string',
 			]
 		},
+		// {
+		// 	name: 'Blink',
+		// 	icon: `file:///${dirIcon}/static/icons/blink.png`,
+		// 	index: 1,
+		// 	color: "230",
+		// 	blocks: [
+		// 		{
+		// 			xml:
+		// 				`<block type="set_led_blink">
+		// 					<value name="delay">
+		// 						<shadow type="math_number">
+		// 							<field name="NUM">1000</field>
+		// 						</shadow>
+		// 					</value>							
+		// 				</block>`
+		// 		}, 'led_blink'
+
+		// 	]
+		// },
+		{
+			name: 'Game',
+			icon: `file:///${dirIcon}/static/icons/game_icon.png`,
+			index: 1,
+			color: "230",
+			blocks: ['block_game_squid']
+		},
+		// {
+		// 	name: 'Display',
+		// 	color: '230',
+		// 	index: 2,
+		// 	icon: `file:///${dirIcon}/static/icons/icon_display.png`,
+		// 	blocks: [
+		// 		{
+		// 			xml:
+		// 				`<block type="i2c128x64_display_begin">
+		// 					<value name="SDA">
+		// 						<shadow type="math_number">
+		// 							<field name="NUM">5</field>
+		// 						</shadow>
+		// 					</value>
+		// 					<value name="SCL">
+		// 						<shadow type="math_number">
+		// 							<field name="NUM">22</field>
+		// 						</shadow>
+		// 					</value>
+		// 				</block>`
+		// 		},
+		// 		{
+		// 			xml: `<block type="variables_set">
+		// 							<field name="VAR">img1</field>
+		// 							<value name="VALUE">
+		// 								<block type="i2c128x64_create_image" inline="false"></block>
+		// 							</value>
+		// 				 </block>`
+		// 		},
+		// 		{
+		// 			xml:
+		// 				`<block type="i2c128x64_display_image">
+		// 					<value name="img">
+		// 						<block type="variables_get">
+		// 							<field name="VAR">img1</field>
+		// 						</block>
+		// 					</value>
+		// 					<value name="x">
+		// 						<shadow type="math_number">
+		// 							<field name="NUM">0</field>
+		// 						</shadow>
+		// 					</value>
+		// 					<value name="x">
+		// 						<shadow type="math_number">
+		// 							<field name="NUM">0</field>
+		// 						</shadow>
+		// 					</value>
+		// 					<value name="y">
+		// 						<shadow type="math_number">
+		// 							<field name="NUM">0</field>
+		// 						</shadow>
+		// 					</value>
+		// 					<value name="width">
+		// 						<shadow type="math_number">
+		// 							<field name="NUM">10</field>
+		// 						</shadow>
+		// 					</value>
+		// 					<value name="height">
+		// 						<shadow type="math_number">
+		// 							<field name="NUM">10</field>
+		// 						</shadow>
+		// 					</value>
+		// 				</block>`
+		// 		},
+		// 		"i2c128x64_display_clear",
+		// 		"i2c128x64_display_display",
+		// 		{
+		// 			xml:
+		// 				`<block type="i2c128x64_display_print">
+		// 							  <value name="text">
+		// 								  <shadow type="basic_string">
+		// 									  <field name="VALUE">Hello world!</field>
+		// 								  </shadow>
+		// 							  </value>
+		// 							  <value name="x">
+		// 								  <shadow type="math_number">
+		// 									  <field name="NUM">0</field>
+		// 								  </shadow>
+		// 							  </value>
+		// 							  <value name="y">
+		// 								  <shadow type="math_number">
+		// 									  <field name="NUM">0</field>
+		// 								  </shadow>
+		// 							  </value>
+		// 						  </block>`
+		// 		},
+		// 		{
+		// 			xml:
+		// 				`<block type="i2c128x64_display_draw_line">
+		// 							  <value name="x0">
+		// 								  <shadow type="math_number">
+		// 									  <field name="NUM">10</field>
+		// 								  </shadow>
+		// 							  </value>
+		// 							  <value name="y0">
+		// 								  <shadow type="math_number">
+		// 									  <field name="NUM">10</field>
+		// 								  </shadow>
+		// 							  </value>
+		// 							  <value name="x1">
+		// 								  <shadow type="math_number">
+		// 									  <field name="NUM">100</field>
+		// 								  </shadow>
+		// 							  </value>
+		// 							  <value name="y1">
+		// 								  <shadow type="math_number">
+		// 									  <field name="NUM">50</field>
+		// 								  </shadow>
+		// 							  </value>
+		// 						  </block>`
+		// 		},
+		// 		{
+		// 			xml:
+		// 				`<block type="i2c128x64_display_draw_rect">
+		// 							  <value name="x">
+		// 								  <shadow type="math_number">
+		// 									  <field name="NUM">10</field>
+		// 								  </shadow>
+		// 							  </value>
+		// 							  <value name="y">
+		// 								  <shadow type="math_number">
+		// 									  <field name="NUM">10</field>
+		// 								  </shadow>
+		// 							  </value>
+		// 							  <value name="width">
+		// 								  <shadow type="math_number">
+		// 									  <field name="NUM">50</field>
+		// 								  </shadow>
+		// 							  </value>
+		// 							  <value name="height">
+		// 								  <shadow type="math_number">
+		// 									  <field name="NUM">30</field>
+		// 								  </shadow>
+		// 							  </value>
+		// 						  </block>`
+		// 		},
+		// 		{
+		// 			xml:
+		// 				`<block type="i2c128x64_display_draw_circle">
+		// 							  <value name="x">
+		// 								  <shadow type="math_number">
+		// 									  <field name="NUM">64</field>
+		// 								  </shadow>
+		// 							  </value>
+		// 							  <value name="y">
+		// 								  <shadow type="math_number">
+		// 									  <field name="NUM">32</field>
+		// 								  </shadow>
+		// 							  </value>
+		// 							  <value name="r">
+		// 								  <shadow type="math_number">
+		// 									  <field name="NUM">20</field>
+		// 								  </shadow>
+		// 							  </value>
+		// 						  </block>`
+		// 		},
+		// 		{
+		// 			xml:
+		// 				`<block type="i2c128x64_display_draw_progress_bar">
+		// 							  <value name="x">
+		// 								  <shadow type="math_number">
+		// 									  <field name="NUM">0</field>
+		// 								  </shadow>
+		// 							  </value>
+		// 							  <value name="y">
+		// 								  <shadow type="math_number">
+		// 									  <field name="NUM">32</field>
+		// 								  </shadow>
+		// 							  </value>
+		// 							  <value name="width">
+		// 								  <shadow type="math_number">
+		// 									  <field name="NUM">120</field>
+		// 								  </shadow>
+		// 							  </value>
+		// 							  <value name="height">
+		// 								  <shadow type="math_number">
+		// 									  <field name="NUM">30</field>
+		// 								  </shadow>
+		// 							  </value>
+		// 							  <value name="progress">
+		// 								  <shadow type="math_number">
+		// 									  <field name="NUM">50</field>
+		// 								  </shadow>
+		// 							  </value>
+		// 						  </block>`
+		// 		},
+		// 		{
+		// 			xml:
+		// 				`<block type="i2c128x64_display_draw_pixel">
+		// 							  <value name="x">
+		// 								  <shadow type="math_number">
+		// 									  <field name="NUM">64</field>
+		// 								  </shadow>
+		// 							  </value>
+		// 							  <value name="y">
+		// 								  <shadow type="math_number">
+		// 									  <field name="NUM">32</field>
+		// 								  </shadow>
+		// 							  </value>    
+		// 						  </block>`
+		// 		},
+		// 		"i2c128x64_display_width",
+		// 		"i2c128x64_display_height",
+		// 		"basic_string"
+		// 	]
+		// },
 		{
 			name: "Music",
 			index: 3,
@@ -440,14 +672,19 @@ module.exports = {
 				{
 					xml:
 						`<block type="KBD_beginMLX90614">
-										<value name="SCL">
-											<shadow type="math_number">
-												<field name="NUM">22</field>
-											</shadow>
-										</value>
-									</block>`
+							<value name="SDA">
+								<shadow type="math_number">
+									<field name="NUM">5</field>
+								</shadow>
+							</value>
+							<value name="SCL">
+								<shadow type="math_number">
+									<field name="NUM">22</field>
+								</shadow>
+							</value>
+						</block>`
 				},
-				'KBD_read_object_temp_c',
+				'kbd_read_object_temp_c',
 				'KBD_read_ambient_temp_c',
 				'KBD_read_object_temp_f',
 				'KBD_read_ambient_temp_f',
